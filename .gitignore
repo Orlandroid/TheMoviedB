@@ -148,4 +148,4 @@ fabric.properties
 
 #For ignore API_KEY_OF_GOOGLE_MAPS
 app/src/main/res/values/google_maps_api.xml
-app/src/main/java/com/example/data/TheMovieDbAuth.kt
+app/src/main/java/com/example/themoviedb/data/TheMovieDbAuth.kt
