@@ -30,6 +30,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val loMasPopularChipsAdapter by lazy {
         ChipsAdapter()
     }
+    private val verGratisChipsAdapter by lazy {
+        ChipsAdapter()
+    }
+    private val ultimosAvancesChipsAdapter by lazy {
+        ChipsAdapter()
+    }
+    private val tendenciasChipsAdapter by lazy {
+        ChipsAdapter()
+    }
     private val resultsAdapter by lazy {
         ResultsAdapter()
     }
@@ -41,6 +50,26 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val alquiler = ChipsAdapter.Element("En alquiler ")
         val cines = ChipsAdapter.Element("En cines ")
         loMasPopularChipsAdapter.setData(listOf(streaming, television, alquiler, cines))
+    }
+
+    private fun setItemsVerGratis() {
+        val streaming = ChipsAdapter.Element("Películas")
+        val television = ChipsAdapter.Element("Televisión ")
+        verGratisChipsAdapter.setData(listOf(streaming, television))
+    }
+
+    private fun setItemsUltimosAvances() {
+        val streaming = ChipsAdapter.Element("En streaming")
+        val television = ChipsAdapter.Element("En televisión")
+        val alquiler = ChipsAdapter.Element("En alquiler")
+        val cines = ChipsAdapter.Element("En cines")
+        ultimosAvancesChipsAdapter.setData(listOf(streaming, television,alquiler,cines))
+    }
+
+    private fun setItemsTendencias() {
+        val hoy = ChipsAdapter.Element("Hoy")
+        val estaSemana = ChipsAdapter.Element("Esta semana")
+        tendenciasChipsAdapter.setData(listOf(hoy,estaSemana))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,6 +87,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             recyclerHeader.adapter = headerAdapter
             recyclerLoMasPopularChips.adapter = loMasPopularChipsAdapter
             recyclerLoMasPopular.adapter = resultsAdapter
+            recyclerChipsVerGratis.adapter=verGratisChipsAdapter
+            recyclerVerGratis.adapter=resultsAdapter
+            recyclerChipsUltimosAvances.adapter=ultimosAvancesChipsAdapter
+            recyclerUltimosAvances.adapter=resultsAdapter
+            recyclerChipsTendencias.adapter=tendenciasChipsAdapter
+            recyclerTendencias.adapter=resultsAdapter
             headerAdapter.setListener(object : HeaderAdapter.ClickOnHeader {
                 override fun clickOnMovie() {
                     val dialogos = Dialogos()
@@ -77,6 +112,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             setMenu()
             setHeaders()
             setItemsLoMasPolular()
+            setItemsVerGratis()
+            setItemsUltimosAvances()
+            setItemsTendencias()
         }
     }
 
@@ -106,7 +144,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 }
                 is Result.Success -> {
                     resultsAdapter.setData(it.data.results)
-                    Log.i("ANDROID", it.data.results.size.toString())
                 }
                 is Result.EmptyList -> {
 

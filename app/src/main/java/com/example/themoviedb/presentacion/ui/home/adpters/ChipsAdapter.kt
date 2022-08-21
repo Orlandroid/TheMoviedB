@@ -1,6 +1,5 @@
 package com.example.themoviedb.presentacion.ui.home.adpters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

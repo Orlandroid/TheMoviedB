@@ -10,4 +10,6 @@
     <string name="title">Title</string>
     <string name="_24_mar_2015">24 mar 2015</string>
     <string name="image">image</string>
+    <string name="ver_gratis">Ver gratis</string>
+    <string name="ltimos_avances">Últimos avances</string>
 </resources>
