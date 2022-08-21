@@ -4,6 +4,7 @@ package com.example.themoviedb.data.remote
 import com.example.themoviedb.domain.RemoteDataSource
 import com.example.themoviedb.domain.entities.MoviesProviders
 import com.example.themoviedb.domain.entities.PopularResponse
+import com.example.themoviedb.domain.entities.TelevisionResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,6 +19,10 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getPopulars(): PopularResponse {
         return theMovieDbApi.getPopulars()
+    }
+
+    override suspend fun getPopularTv(): TelevisionResponse {
+        return theMovieDbApi.getPopularTv()
     }
 
 

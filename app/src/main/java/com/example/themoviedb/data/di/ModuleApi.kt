@@ -2,9 +2,9 @@ package com.example.themoviedb.data.di
 
 
 import com.example.themoviedb.data.Repositorio
+import com.example.themoviedb.data.helpers.ApiInterceptor
 import com.example.themoviedb.data.remote.RemoteDataSourceImpl
 import com.example.themoviedb.data.remote.TheMovieDbApi
-import com.example.themoviedb.domain.RemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,6 +32,7 @@ object ModuleApi {
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
+            .addInterceptor(ApiInterceptor())
             .addInterceptor(httpLoggingInterceptor)
             .retryOnConnectionFailure(true)
             .build()
@@ -55,7 +56,6 @@ object ModuleApi {
     @Singleton
     @Provides
     fun provideRepository(
-        webServices: TheMovieDbApi,
         remoteDataSourceImpl: RemoteDataSourceImpl
     ): Repositorio = Repositorio(remoteDataSourceImpl)
 

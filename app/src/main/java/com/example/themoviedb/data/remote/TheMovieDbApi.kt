@@ -2,9 +2,9 @@ package com.example.themoviedb.data.remote
 
 import com.example.themoviedb.domain.entities.MoviesProviders
 import com.example.themoviedb.domain.entities.PopularResponse
+import com.example.themoviedb.domain.entities.TelevisionResponse
 import retrofit2.http.GET
 import com.example.themoviedb.domain.state.Result
-import okhttp3.ResponseBody
 
 interface TheMovieDbApi {
 
@@ -13,6 +13,9 @@ interface TheMovieDbApi {
 
     @GET("movie/popular")
     suspend fun getPopulars(): PopularResponse
+
+    @GET("tv/popular")
+    suspend fun getPopularTv(): TelevisionResponse
 
     @GET("movie/upcoming")
     suspend fun getUpComming(): Result<String>
@@ -31,6 +34,5 @@ interface TheMovieDbApi {
 
     @GET("list/{id}")
     suspend fun getAllMoviesByUserId(): Result<String>
-
 
 }

@@ -11,9 +11,13 @@ import com.example.themoviedb.domain.entities.PopularResponse
 import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import com.example.themoviedb.domain.state.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
+import retrofit2.HttpException
+import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,6 +32,10 @@ class HomeViewModel @Inject constructor(
     private val _providers = MutableLiveData<Result<PopularResponse>>()
     val providers: LiveData<Result<PopularResponse>>
         get() = _providers
+
+    private val _popularTvResponse = MutableLiveData<Result<PopularResponse>>()
+    val popularTvResponse: LiveData<Result<PopularResponse>>
+        get() = _popularTvResponse
 
 
     fun getProviders() {
@@ -53,4 +61,30 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
+    fun getPopularTv(){
+        viewModelScope.launch(coroutineDispatchers.io) {
+            withContext(coroutineDispatchers.main) {
+                _popularTvResponse.value = Result.Loading
+            }
+            if (!networkHelper.isNetworkConnected()) {
+                withContext(coroutineDispatchers.main) {
+                    _popularTvResponse.value = Result.ErrorNetwork(errorNetwork)
+                }
+                return@launch
+            }
+            try {
+                val response = repositorio.getPopulars()
+                withContext(coroutineDispatchers.main) {
+                    _popularTvResponse.value = Result.Success(response)
+                }
+            } catch (e: Exception) {
+                withContext(coroutineDispatchers.main) {
+                    _popularTvResponse.value = Result.Error(e.message ?: "Error app")
+                }
+            }
+        }
+    }
+
+
 }

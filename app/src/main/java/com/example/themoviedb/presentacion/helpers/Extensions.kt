@@ -3,11 +3,15 @@ package com.example.themoviedb.presentacion.helpers
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.util.Patterns
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.example.themoviedb.presentacion.util.ImageUtil
 import java.io.File
 import java.io.FileOutputStream
 
@@ -33,6 +37,12 @@ fun View.gone() {
     this.visibility = View.GONE
 }
 
+fun ImageView.loadImage(url: String, posterSize: String = ImageUtil.IMAGE_500) {
+    val imageUtil = ImageUtil()
+    Glide.with(this.context).load(imageUtil.getBaseUrlImagePoster(urlImage = url, posteSize = posterSize)).into(this)
+    Log.i("android",imageUtil.getBaseUrlImagePoster(urlImage = url, posteSize = posterSize))
+}
+
 fun View.invisible() {
     this.visibility = View.INVISIBLE
 }
@@ -56,7 +66,7 @@ fun SearchView.disableSearchIconHint() {
     }
 }
 
-fun Bitmap.saveFile(path: String) {
+fun Bitmap.saveFile(path: String): File {
     val f = File(path)
     if (!f.exists()) {
         f.createNewFile()
@@ -65,4 +75,5 @@ fun Bitmap.saveFile(path: String) {
     compress(Bitmap.CompressFormat.PNG, 100, stream)
     stream.flush()
     stream.close()
+    return f
 }

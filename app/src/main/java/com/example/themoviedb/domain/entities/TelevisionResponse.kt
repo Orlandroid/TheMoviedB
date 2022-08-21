@@ -1,7 +1,6 @@
 package com.example.themoviedb.domain.entities
 
-data class PopularResponse(
+data class TelevisionResponse(
     val page: Int,
     val results: List<Result>
 )
-

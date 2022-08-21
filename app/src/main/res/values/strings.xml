@@ -2,4 +2,12 @@
     <string name="app_name">TheMovieDb</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar_dialog">Cancelar</string>
+    <string name="texto_menu_principal">Bienvenidos.Millones de películas, programas de televisión y personas por descubrir. Explora ahora.</string>
+    <string name="lo_mas_polular">Lo más popular</string>
+    <string name="en_streaming">En streaming</string>
+    <string name="title">Title</string>
+    <string name="_24_mar_2015">24 mar 2015</string>
+    <string name="image">image</string>
 </resources>
