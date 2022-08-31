@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/jobsFragment">
 
     <fragment
         tools:layout="@layout/fragment_home"
         android:id="@+id/homeFragment"
         android:name="com.example.themoviedb.presentacion.ui.home.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/jobsFragment"
+        tools:layout="@layout/fragment_jobs"
+        android:name="com.example.themoviedb.presentacion.ui.jobs.JobsFragment"
+        android:label="JobsFragment" />
 </navigation>

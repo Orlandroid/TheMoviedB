@@ -4,25 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.themoviedb.data.Repositorio
+import com.example.themoviedb.data.Repository
 import com.example.themoviedb.data.di.CoroutineDispatchers
-import com.example.themoviedb.domain.entities.MoviesProviders
 import com.example.themoviedb.domain.entities.PopularResponse
 import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import com.example.themoviedb.domain.state.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.ResponseBody
-import retrofit2.HttpException
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repositorio: Repositorio,
+    private val repositorio: Repository,
     private val coroutineDispatchers: CoroutineDispatchers,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {

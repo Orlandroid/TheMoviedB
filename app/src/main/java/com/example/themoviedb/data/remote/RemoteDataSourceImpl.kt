@@ -2,6 +2,7 @@ package com.example.themoviedb.data.remote
 
 
 import com.example.themoviedb.domain.RemoteDataSource
+import com.example.themoviedb.domain.entities.JobsResponse
 import com.example.themoviedb.domain.entities.MoviesProviders
 import com.example.themoviedb.domain.entities.PopularResponse
 import com.example.themoviedb.domain.entities.TelevisionResponse
@@ -23,6 +24,10 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getPopularTv(): TelevisionResponse {
         return theMovieDbApi.getPopularTv()
+    }
+
+    override suspend fun getJobs(): List<JobsResponse> {
+        return theMovieDbApi.getJobs()
     }
 
 
