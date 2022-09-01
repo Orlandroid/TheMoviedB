@@ -1,4 +1,4 @@
-package com.example.themoviedb.presentacion.ui.jobs
+package com.example.themoviedb.presentacion.ui.jobs.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,18 +8,23 @@ import com.example.themoviedb.domain.entities.JobsResponse
 
 class JobsAdapter : RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 
-    private var listOfJobs = listOf<JobsResponse>()
+    private var listOfJobs = listOf<String>()
+    companion object{
+        private  var imageJob:Int?=null
+    }
 
-    fun setData(jobs: List<JobsResponse>) {
-        listOfJobs = jobs
+    fun setData(jobsResponse: JobsResponse) {
+        imageJob=jobsResponse.getImageDepartment()
+        listOfJobs = jobsResponse.jobs
         notifyDataSetChanged()
     }
 
 
     class ViewHolder(private val binding: ItemJobBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(job: JobsResponse) {
+        fun bind(job: String) {
             with(binding) {
-                tvTitleJob.text = job.department
+                imageJob?.let { imageView2.setImageResource(it) }
+                tvTitleJob.text = job
             }
         }
     }
