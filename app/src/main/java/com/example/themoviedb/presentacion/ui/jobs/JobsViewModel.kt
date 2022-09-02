@@ -40,7 +40,7 @@ class JobsViewModel @Inject constructor(
                 return@launch
             }
             try {
-                val response = repositorio.getJobs()
+                val response = repositorio.getDepartments()
                 if (response.isEmpty()) {
                     withContext(coroutineDispatchers.main) {
                         _jobsResponse.value = Result.EmptyList

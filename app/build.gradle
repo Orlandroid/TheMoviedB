@@ -69,4 +69,8 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    //Room Dependecies
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version" // corutinas
+    kapt "androidx.room:room-compiler:$room_version"
 }
