@@ -13,4 +13,9 @@
     <string name="ver_gratis">Ver gratis</string>
     <string name="ltimos_avances">Últimos avances</string>
     <string name="job">Job</string>
+    <string name="departments">Departments</string>
+    <string name="proyectos">Proyectos</string>
+    <string name="close">Close</string>
+    <string name="open">Open</string>
+
 </resources>

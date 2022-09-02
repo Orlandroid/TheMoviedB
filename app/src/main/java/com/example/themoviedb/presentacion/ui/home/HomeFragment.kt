@@ -2,14 +2,16 @@ package com.example.themoviedb.presentacion.ui.home
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.domain.state.Result
+import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.dialogs.Dialogos
 import com.example.themoviedb.presentacion.ui.home.adpters.ChipsAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.HomeAdapter
@@ -43,7 +45,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         ResultsAdapter()
     }
 
-
     private fun setItemsLoMasPolular() {
         val streaming = ChipsAdapter.Element("En streaming")
         val television = ChipsAdapter.Element("En Televisión ")
@@ -63,13 +64,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         val television = ChipsAdapter.Element("En televisión")
         val alquiler = ChipsAdapter.Element("En alquiler")
         val cines = ChipsAdapter.Element("En cines")
-        ultimosAvancesChipsAdapter.setData(listOf(streaming, television,alquiler,cines))
+        ultimosAvancesChipsAdapter.setData(listOf(streaming, television, alquiler, cines))
     }
 
     private fun setItemsTendencias() {
         val hoy = ChipsAdapter.Element("Hoy")
         val estaSemana = ChipsAdapter.Element("Esta semana")
-        tendenciasChipsAdapter.setData(listOf(hoy,estaSemana))
+        tendenciasChipsAdapter.setData(listOf(hoy, estaSemana))
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,6 +80,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     override fun setUpUi() {
+        (requireActivity() as MainActivity).showToolbar()
         //viewModel.getProviders()
         viewModel.getPopularTv()
         with(binding) {
@@ -87,12 +89,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             recyclerHeader.adapter = headerAdapter
             recyclerLoMasPopularChips.adapter = loMasPopularChipsAdapter
             recyclerLoMasPopular.adapter = resultsAdapter
-            recyclerChipsVerGratis.adapter=verGratisChipsAdapter
-            recyclerVerGratis.adapter=resultsAdapter
-            recyclerChipsUltimosAvances.adapter=ultimosAvancesChipsAdapter
-            recyclerUltimosAvances.adapter=resultsAdapter
-            recyclerChipsTendencias.adapter=tendenciasChipsAdapter
-            recyclerTendencias.adapter=resultsAdapter
+            recyclerChipsVerGratis.adapter = verGratisChipsAdapter
+            recyclerVerGratis.adapter = resultsAdapter
+            recyclerChipsUltimosAvances.adapter = ultimosAvancesChipsAdapter
+            recyclerUltimosAvances.adapter = resultsAdapter
+            recyclerChipsTendencias.adapter = tendenciasChipsAdapter
+            recyclerTendencias.adapter = resultsAdapter
             headerAdapter.setListener(object : HeaderAdapter.ClickOnHeader {
                 override fun clickOnMovie() {
                     val dialogos = Dialogos()

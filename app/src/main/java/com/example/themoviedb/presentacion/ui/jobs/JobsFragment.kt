@@ -7,7 +7,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentJobsBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
+import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.jobs.adapter.JobsAdapter
+
 
 class JobsFragment : BaseFragment<FragmentJobsBinding>(R.layout.fragment_jobs) {
 
@@ -21,7 +23,9 @@ class JobsFragment : BaseFragment<FragmentJobsBinding>(R.layout.fragment_jobs) {
         setUpUi()
     }
 
+
     override fun setUpUi() {
+        (requireActivity() as MainActivity).hydeToolbar()
         with(binding) {
             recyclerView.adapter = jobsAdapter
             jobsAdapter.setData(args.jobResponse)
