@@ -10,4 +10,22 @@
         android:id="@+id/homeFragment"
         android:name="com.example.themoviedb.presentacion.ui.home.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/appartment_jobs"
+        tools:layout="@layout/fragment_apartments"
+        android:name="com.example.themoviedb.presentacion.ui.jobs.ApartmentsFragment"
+        android:label="JobsFragment" >
+        <action
+            android:id="@+id/action_appartment_jobs_to_jobsFragment2"
+            app:destination="@id/jobsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobsFragment"
+        tools:layout="@layout/fragment_jobs"
+        android:name="com.example.themoviedb.presentacion.ui.jobs.JobsFragment"
+        android:label="JobsFragment" >
+        <argument
+            android:name="jobResponse"
+            app:argType="com.example.themoviedb.domain.entities.JobsResponse" />
+    </fragment>
 </navigation>

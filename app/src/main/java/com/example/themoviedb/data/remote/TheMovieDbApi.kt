@@ -1,5 +1,6 @@
 package com.example.themoviedb.data.remote
 
+import com.example.themoviedb.domain.entities.JobsResponse
 import com.example.themoviedb.domain.entities.MoviesProviders
 import com.example.themoviedb.domain.entities.PopularResponse
 import com.example.themoviedb.domain.entities.TelevisionResponse
@@ -34,5 +35,8 @@ interface TheMovieDbApi {
 
     @GET("list/{id}")
     suspend fun getAllMoviesByUserId(): Result<String>
+
+    @GET("configuration/jobs")
+    suspend fun getJobs(): List<JobsResponse>
 
 }

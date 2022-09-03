@@ -25,7 +25,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    room_version = "2.4.2"
+    room_version = "2.4.3"
     retrofit_version = "2.9.0"
     navigation_version = "2.5.1"
     lifecycle_version = "2.5.1"

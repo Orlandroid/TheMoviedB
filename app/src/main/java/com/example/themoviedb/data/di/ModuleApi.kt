@@ -1,7 +1,8 @@
 package com.example.themoviedb.data.di
 
 
-import com.example.themoviedb.data.Repositorio
+import com.example.themoviedb.data.Repository
+import com.example.themoviedb.data.db.LocalDataSourceImpl
 import com.example.themoviedb.data.helpers.ApiInterceptor
 import com.example.themoviedb.data.remote.RemoteDataSourceImpl
 import com.example.themoviedb.data.remote.TheMovieDbApi
@@ -56,7 +57,8 @@ object ModuleApi {
     @Singleton
     @Provides
     fun provideRepository(
-        remoteDataSourceImpl: RemoteDataSourceImpl
-    ): Repositorio = Repositorio(remoteDataSourceImpl)
+        remoteDataSourceImpl: RemoteDataSourceImpl,
+        localDataSourceImpl: LocalDataSourceImpl
+    ): Repository = Repository(remoteDataSourceImpl, localDataSourceImpl)
 
 }
