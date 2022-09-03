@@ -9,6 +9,7 @@ import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentApartmentsBinding
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseFragment
+import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.jobs.adapter.DepartmentAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +27,7 @@ class ApartmentsFragment : BaseFragment<FragmentApartmentsBinding>(R.layout.frag
 
     @SuppressLint("SetTextI18n")
     override fun setUpUi() {
+        (requireActivity() as MainActivity).hydeToolbar()
         viewModel.getJobs()
         with(binding) {
             toolbarLayout.toolbarBack.setOnClickListener {
