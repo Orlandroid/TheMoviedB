@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">TheMovieDb</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text
+
+   Agregar multilenguajes a los strings
+    -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="aceptar">Aceptar</string>
     <string name="cancelar_dialog">Cancelar</string>
@@ -17,5 +20,8 @@
     <string name="proyectos">Proyectos</string>
     <string name="close">Close</string>
     <string name="open">Open</string>
+    <string name="languajes">Languajes</string>
+    <string name="peoples">Peoples</string>
+    <string name="description">Description</string>
 
 </resources>
