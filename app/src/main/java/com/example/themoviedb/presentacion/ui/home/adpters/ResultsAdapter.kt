@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themoviedb.databinding.ItemResultBinding
-import com.example.themoviedb.domain.entities.Result
+import com.example.themoviedb.domain.entities.remote.Result
 import com.example.themoviedb.presentacion.helpers.loadImage
-import com.example.themoviedb.presentacion.util.ImageUtil
 
 class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
 
