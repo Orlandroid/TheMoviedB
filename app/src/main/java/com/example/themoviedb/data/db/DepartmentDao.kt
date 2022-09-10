@@ -1,8 +1,7 @@
 package com.example.themoviedb.data.db
 
 import androidx.room.*
-import com.example.themoviedb.domain.entities.Department
-import kotlinx.coroutines.flow.Flow
+import com.example.themoviedb.domain.entities.local.Department
 
 @Dao
 interface DepartmentDao {

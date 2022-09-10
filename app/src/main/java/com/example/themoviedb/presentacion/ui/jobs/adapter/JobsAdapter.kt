@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.themoviedb.databinding.ItemJobBinding
-import com.example.themoviedb.domain.entities.JobsResponse
+import com.example.themoviedb.domain.entities.remote.JobsResponse
 
 class JobsAdapter : RecyclerView.Adapter<JobsAdapter.ViewHolder>() {
 

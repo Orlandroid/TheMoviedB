@@ -2,10 +2,7 @@ package com.example.themoviedb.data.remote
 
 
 import com.example.themoviedb.domain.RemoteDataSource
-import com.example.themoviedb.domain.entities.JobsResponse
-import com.example.themoviedb.domain.entities.MoviesProviders
-import com.example.themoviedb.domain.entities.PopularResponse
-import com.example.themoviedb.domain.entities.TelevisionResponse
+import com.example.themoviedb.domain.entities.remote.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -28,6 +25,14 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getJobs(): List<JobsResponse> {
         return theMovieDbApi.getJobs()
+    }
+
+    override suspend fun getTranslation(): List<String> {
+        return theMovieDbApi.getTranslation()
+    }
+
+    override suspend fun getLanguages(): List<Languajes> {
+        return theMovieDbApi.getLanguages()
     }
 
 

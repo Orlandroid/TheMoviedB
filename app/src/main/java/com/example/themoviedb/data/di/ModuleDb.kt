@@ -33,5 +33,9 @@ object ModuleDb {
     @Provides
     fun provideDepartmentDao(db: TheMovieDbDatabase) = db.departmentDao()
 
+    @Singleton
+    @Provides
+    fun provideConfigurationDao(db: TheMovieDbDatabase) = db.configurationDao()
+
 
 }

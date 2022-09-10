@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/appartment_jobs"
+        android:icon="@drawable/ic_baseline_home_work_24"
         android:title="@string/departments" />
     <item
-        android:id="@+id/projectsFragment"
-        android:title="@string/proyectos" />
+        android:id="@+id/translationsFragment"
+        android:icon="@drawable/ic_baseline_language_24"
+        android:title="@string/languajes" />
+    <item
+        android:id="@+id/projectsFragments"
+        android:icon="@drawable/ic_baseline_people_24"
+        android:title="@string/peoples" />
 
 </menu>

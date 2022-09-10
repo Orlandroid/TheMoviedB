@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.themoviedb.data.Repository
 import com.example.themoviedb.data.di.CoroutineDispatchers
-import com.example.themoviedb.domain.entities.JobsResponse
+import com.example.themoviedb.domain.entities.remote.JobsResponse
 import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import com.example.themoviedb.domain.state.Result
 import dagger.hilt.android.lifecycle.HiltViewModel

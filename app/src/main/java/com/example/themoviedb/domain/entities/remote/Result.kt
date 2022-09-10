@@ -1,4 +1,4 @@
-package com.example.themoviedb.domain.entities
+package com.example.themoviedb.domain.entities.remote
 
 data class Result(
     val adult: Boolean,

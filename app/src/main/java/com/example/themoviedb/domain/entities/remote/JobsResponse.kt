@@ -1,4 +1,4 @@
-package com.example.themoviedb.domain.entities
+package com.example.themoviedb.domain.entities.remote
 
 import android.os.Parcelable
 import com.example.themoviedb.R
