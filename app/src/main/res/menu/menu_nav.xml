@@ -5,7 +5,7 @@
         android:icon="@drawable/ic_baseline_home_work_24"
         android:title="@string/departments" />
     <item
-        android:id="@+id/projectsFragment"
+        android:id="@+id/translationsFragment"
         android:icon="@drawable/ic_baseline_language_24"
         android:title="@string/languajes" />
     <item

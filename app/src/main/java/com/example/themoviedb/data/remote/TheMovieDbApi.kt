@@ -1,9 +1,6 @@
 package com.example.themoviedb.data.remote
 
-import com.example.themoviedb.domain.entities.remote.JobsResponse
-import com.example.themoviedb.domain.entities.MoviesProviders
-import com.example.themoviedb.domain.entities.remote.PopularResponse
-import com.example.themoviedb.domain.entities.remote.TelevisionResponse
+import com.example.themoviedb.domain.entities.remote.*
 import retrofit2.http.GET
 import com.example.themoviedb.domain.state.Result
 
@@ -42,4 +39,6 @@ interface TheMovieDbApi {
     @GET("configuration/primary_translations")
     suspend fun getTranslation(): List<String>
 
+    @GET("configuration/languages")
+    suspend fun getLanguages(): List<Languajes>
 }

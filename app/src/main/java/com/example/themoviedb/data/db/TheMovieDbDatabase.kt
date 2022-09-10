@@ -9,7 +9,7 @@ import com.example.themoviedb.domain.entities.local.Department
 import com.example.themoviedb.domain.entities.local.Translation
 
 
-@Database(entities = [Department::class, Translation::class], version = 1, exportSchema = false)
+@Database(entities = [Department::class, Translation::class], version = 2, exportSchema = false)
 @TypeConverters(StringList::class)
 abstract class TheMovieDbDatabase : RoomDatabase() {
 

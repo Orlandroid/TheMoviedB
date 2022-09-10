@@ -9,7 +9,7 @@ import com.example.themoviedb.presentacion.base.BaseDialog
 
 class DialogInfo(
     private val kindOfMessage: Int = SUCCES_MESSAGE,
-    private val messageBody: String,
+    private val messageBody: String="",
     private val clikOnAccept: ClickOnAccept? = null,
     private val isTwoButtonDialog: Boolean = false
 ) :

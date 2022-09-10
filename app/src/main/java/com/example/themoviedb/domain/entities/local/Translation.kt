@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class Translation(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val translations: String,
+    val translation: String,
 )

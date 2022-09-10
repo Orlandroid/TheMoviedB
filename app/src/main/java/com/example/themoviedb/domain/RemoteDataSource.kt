@@ -1,9 +1,6 @@
 package com.example.themoviedb.domain
 
-import com.example.themoviedb.domain.entities.remote.JobsResponse
-import com.example.themoviedb.domain.entities.MoviesProviders
-import com.example.themoviedb.domain.entities.remote.PopularResponse
-import com.example.themoviedb.domain.entities.remote.TelevisionResponse
+import com.example.themoviedb.domain.entities.remote.*
 
 interface RemoteDataSource {
     suspend fun getProviders(): MoviesProviders
@@ -11,4 +8,5 @@ interface RemoteDataSource {
     suspend fun getPopularTv(): TelevisionResponse
     suspend fun getJobs(): List<JobsResponse>
     suspend fun getTranslation(): List<String>
+    suspend fun getLanguages(): List<Languajes>
 }

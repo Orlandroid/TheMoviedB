@@ -2,9 +2,9 @@ package com.example.themoviedb.data
 
 import com.example.themoviedb.data.db.LocalDataSourceImpl
 import com.example.themoviedb.data.remote.RemoteDataSourceImpl
-import com.example.themoviedb.domain.entities.*
 import com.example.themoviedb.domain.entities.local.Department
 import com.example.themoviedb.domain.entities.remote.JobsResponse
+import com.example.themoviedb.domain.entities.remote.MoviesProviders
 import com.example.themoviedb.domain.entities.remote.PopularResponse
 import com.example.themoviedb.domain.entities.remote.TelevisionResponse
 import javax.inject.Inject
@@ -44,7 +44,21 @@ class Repository @Inject constructor(
         return response
     }
 
-    suspend fun getTranslation() = remoteDataSource.getTranslation()
+    suspend fun getTranslation(): List<String> {
+        val allTranslation = localDataSource.getTranslation()
+        if (allTranslation.isNotEmpty()) {
+            val translationFromCache = arrayListOf<String>()
+            allTranslation.forEach {
+                translationFromCache.add(
+                    it.translation
+                )
+            }
+            return translationFromCache
+        }
+        return remoteDataSource.getTranslation()
+    }
+
+    suspend fun getLanguages() = remoteDataSource.getLanguages()
 
     suspend fun getProviders(): MoviesProviders = remoteDataSource.getProviders()
 

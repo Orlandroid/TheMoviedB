@@ -6,10 +6,16 @@ import okhttp3.Response
 
 
 class ApiInterceptor : Interceptor {
+    companion object {
+        private const val API_KEY = "api_key"
+        private const val LANGUAGE = "language"
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         var original = chain.request()
         val url =
-            original.url.newBuilder().addQueryParameter("api_key", TheMovieDbAuth.API_KEY).build()
+            original.url.newBuilder().addQueryParameter(API_KEY, TheMovieDbAuth.API_KEY)
+                .addQueryParameter(LANGUAGE, "es-MX").build()
         original = original.newBuilder().url(url).build()
         return chain.proceed(original)
     }
