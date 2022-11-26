@@ -21,7 +21,7 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(result: Result) {
             with(binding) {
-                imageResult.loadImage(result.backdrop_path)
+                result.backdrop_path?.let { imageResult.loadImage(it) }
                 title.text=result.title
                 fecha.text=result.release_date
             }

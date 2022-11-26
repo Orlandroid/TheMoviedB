@@ -4,13 +4,11 @@ package com.example.themoviedb.presentacion.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeBinding
-import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.domain.state.Result
+import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.dialogs.Dialogos
 import com.example.themoviedb.presentacion.ui.home.adpters.ChipsAdapter

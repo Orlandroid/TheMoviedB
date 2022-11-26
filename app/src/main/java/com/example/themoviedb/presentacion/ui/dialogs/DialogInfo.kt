@@ -9,11 +9,12 @@ import com.example.themoviedb.presentacion.base.BaseDialog
 
 class DialogInfo(
     private val kindOfMessage: Int = SUCCES_MESSAGE,
-    private val messageBody: String="",
-    private val clikOnAccept: ClickOnAccept? = null,
+    private val messageBody: String = "",
+    private val clickOnAccept: ClickOnAccept? = null,
     private val isTwoButtonDialog: Boolean = false
 ) :
     BaseDialog<AlertDialogInfoBinding>(R.layout.alert_dialog_info) {
+
 
     companion object {
         const val SUCCES_MESSAGE_COLOR = R.color.succes
@@ -24,7 +25,6 @@ class DialogInfo(
         const val WARNING_MESSAGE = 1
         const val ERROR_MESSAGE = 2
         const val INFO_MESSAGE = 3
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,15 +35,15 @@ class DialogInfo(
     override fun setUpUi() {
         with(binding) {
             buttonAceptarOneButton.setOnClickListener {
-                clikOnAccept?.clikOnAccept()
+                clickOnAccept?.clickOnAccept()
                 dialog?.dismiss()
             }
             buttonAceptar.setOnClickListener {
-                clikOnAccept?.clikOnAccept()
+                clickOnAccept?.clickOnAccept()
                 dialog?.dismiss()
             }
             buttonCancelar.setOnClickListener {
-                clikOnAccept?.clikOnCancel()
+                clickOnAccept?.clickOnCancel()
                 dialog?.dismiss()
             }
             binding.bodyMessage.text = messageBody
@@ -53,8 +53,8 @@ class DialogInfo(
     }
 
     interface ClickOnAccept {
-        fun clikOnAccept()
-        fun clikOnCancel()
+        fun clickOnAccept()
+        fun clickOnCancel()
     }
 
     private fun setKindOfView(isTwoButtonDialog: Boolean) {
@@ -88,7 +88,7 @@ class DialogInfo(
                 binding.titleHeader.text = "Error"
             }
             3 -> {
-                binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE))
+                binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE_COLOR))
                 binding.titleHeader.text = "Info"
             }
         }
