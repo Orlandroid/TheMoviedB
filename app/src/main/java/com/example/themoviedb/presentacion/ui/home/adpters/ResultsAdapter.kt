@@ -22,8 +22,9 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
         fun bind(result: Result) {
             with(binding) {
                 result.backdrop_path?.let { imageResult.loadImage(it) }
-                title.text=result.title
-                fecha.text=result.release_date
+                title.text = result.title
+                fecha.text = result.release_date
+                progressBar.progress = 90
             }
         }
     }
@@ -39,7 +40,6 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
     }
 
     override fun getItemCount() = listOfResults.size
-
 
 
 }

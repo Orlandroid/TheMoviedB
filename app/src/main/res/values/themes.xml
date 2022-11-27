@@ -16,8 +16,8 @@
     </style>
     <style name="card">
         <item name="cardBackgroundColor">@color/white</item>
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardUseCompatPadding">true</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardUseCompatPadding">false</item>
     </style>
     <style name="text">
         <item name="android:textColor">@color/black</item>
@@ -27,5 +27,9 @@
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@android:color/white</item>
+    </style>
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle_progress</item>
     </style>
 </resources>

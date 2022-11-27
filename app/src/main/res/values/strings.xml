@@ -23,5 +23,10 @@
     <string name="languajes">Languajes</string>
     <string name="peoples">Peoples</string>
     <string name="description">Description</string>
+    <string name="polular">Popular</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="_60">60%</string>
 
 </resources>

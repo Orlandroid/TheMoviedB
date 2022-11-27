@@ -1,4 +1,4 @@
-package com.example.themoviedb.presentacion.ui.home
+package com.example.themoviedb.presentacion.ui.home.home
 
 
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.example.themoviedb.presentacion.ui.dialogs.Dialogos
 import com.example.themoviedb.presentacion.ui.home.adpters.ChipsAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.HomeAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
-import com.example.themoviedb.ui.home.adpters.HeaderAdapter
+import com.example.themoviedb.presentacion.ui.home.adpters.HeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

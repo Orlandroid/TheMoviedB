@@ -1,4 +1,4 @@
-package com.example.themoviedb.presentacion.ui.home
+package com.example.themoviedb.presentacion.ui.home.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
