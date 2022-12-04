@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PopularViewModel @Inject constructor(
-    private val repositorio: Repository,
+    private val repository: Repository,
     private val coroutineDispatchers: CoroutineDispatchers,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
@@ -38,7 +38,7 @@ class PopularViewModel @Inject constructor(
                 return@launch
             }
             try {
-                val response = repositorio.getPopulars()
+                val response = repository.getPopulars()
                 withContext(coroutineDispatchers.main) {
                     _popularTvResponse.value = Result.Success(response)
                 }

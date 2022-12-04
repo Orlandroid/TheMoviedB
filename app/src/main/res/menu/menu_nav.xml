@@ -9,7 +9,7 @@
         android:icon="@drawable/ic_baseline_language_24"
         android:title="@string/languajes" />
     <item
-        android:id="@+id/projectsFragments"
+        android:id="@+id/peopleFragment"
         android:icon="@drawable/ic_baseline_people_24"
         android:title="@string/peoples" />
 

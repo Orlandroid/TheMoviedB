@@ -14,6 +14,7 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding>(R.layout.frag
 
     override fun setUpUi() {
         (requireActivity() as MainActivity).showToolbar()
+        (requireActivity() as MainActivity).changeTextToolbar("Home")
         with(binding) {
             adapter = HomeMoviesViewPagerAdapter(this@HomeMoviesFragment)
             viewPager.adapter = adapter

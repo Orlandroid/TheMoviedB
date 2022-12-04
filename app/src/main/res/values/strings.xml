@@ -28,5 +28,7 @@
     <string name="up_coming">Up Coming</string>
     <string name="top_rated">Top Rated</string>
     <string name="_60">60%</string>
+    <string name="error_service">Servicio no disponible, intente más tarde.</string>
+    <string name="verifica_conexion">Verifica tu conexion de internet</string>
 
 </resources>

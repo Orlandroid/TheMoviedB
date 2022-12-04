@@ -1,7 +1,9 @@
 package com.example.themoviedb.presentacion.base
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.themoviedb.data.di.CoroutineDispatchers
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.helpers.NetworkHelper
@@ -9,7 +11,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okio.IOException
 import retrofit2.HttpException
-import java.net.ProtocolException
 import java.net.SocketTimeoutException
 
 
@@ -27,8 +28,8 @@ abstract class BaseViewModel constructor(
 
     suspend inline fun <T> safeApiCall(
         result: MutableLiveData<Result<T>>,
-        crossinline apiToCall: suspend () -> Unit,
         coroutineDispatchers: CoroutineDispatchers,
+        crossinline apiToCall: suspend () -> Unit,
     ) {
         viewModelScope.launch(coroutineDispatchers.io) {
             try {

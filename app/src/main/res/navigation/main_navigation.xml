@@ -33,4 +33,9 @@
         android:id="@+id/homeMoviesFragment"
         android:name="com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragment"
         android:label="HomeMoviesFragment" />
+    <fragment
+        tools:layout="@layout/fragment_people"
+        android:id="@+id/peopleFragment"
+        android:name="com.example.themoviedb.presentacion.ui.people.PeopleFragment"
+        android:label="PeopleFragment" />
 </navigation>

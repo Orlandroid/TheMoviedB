@@ -2,11 +2,12 @@ package com.example.themoviedb.presentacion.ui.home.popular
 
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentPopularBinding
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseFragment
+import com.example.themoviedb.presentacion.ui.extensions.showErrorApi
+import com.example.themoviedb.presentacion.ui.extensions.showErrorNetwork
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,11 +40,12 @@ class PopularFragment : BaseFragment<FragmentPopularBinding>(R.layout.fragment_p
 
                 }
                 is Result.Error -> {
-
+                    showErrorApi()
                 }
                 is Result.ErrorNetwork -> {
-
+                    showErrorNetwork()
                 }
+                else -> {}
             }
         }
     }

@@ -13,6 +13,7 @@ import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -55,6 +56,17 @@ class PeopleViewModel @Inject constructor(
             } catch (e: Exception) {
                 withContext(coroutineDispatchers.main) {
                     _peoplePopularResponse.value = Result.Error(e.message ?: "Error app")
+                }
+            }
+        }
+    }
+
+    fun getPeople() {
+        viewModelScope.launch {
+            safeApiCall(_peoplePopularResponse, coroutineDispatchers) {
+                val response = repository.getPersonsPopular()
+                withContext(Dispatchers.Main) {
+                    _peoplePopularResponse.value = Result.Success(response)
                 }
             }
         }

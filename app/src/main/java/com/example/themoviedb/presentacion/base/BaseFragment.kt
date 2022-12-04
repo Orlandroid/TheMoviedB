@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.example.themoviedb.presentacion.ui.MainActivity
 
 abstract class BaseFragment<ViewBinding : ViewDataBinding>(@LayoutRes protected val contentLayoutId: Int) :
     Fragment() {
@@ -28,13 +29,12 @@ abstract class BaseFragment<ViewBinding : ViewDataBinding>(@LayoutRes protected 
         super.onViewCreated(view, savedInstanceState)
         setUpUi()
         observerViewModel()
+        (requireActivity() as MainActivity).hideProgress()
     }
 
     protected abstract fun setUpUi()
 
     open fun observerViewModel() {
-
     }
-
 
 }
