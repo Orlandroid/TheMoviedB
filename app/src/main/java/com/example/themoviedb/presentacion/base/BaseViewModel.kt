@@ -16,7 +16,7 @@ import java.net.SocketTimeoutException
 
 abstract class BaseViewModel constructor(
     protected val coroutineDispatchers: CoroutineDispatchers,
-    protected val networkHelper: NetworkHelper
+    val networkHelper: NetworkHelper
 ) : ViewModel() {
 
     enum class ErrorType {
@@ -25,7 +25,6 @@ abstract class BaseViewModel constructor(
         UNKNOWN
     }
 
-
     suspend inline fun <T> safeApiCall(
         result: MutableLiveData<Result<T>>,
         coroutineDispatchers: CoroutineDispatchers,
@@ -33,6 +32,13 @@ abstract class BaseViewModel constructor(
     ) {
         viewModelScope.launch(coroutineDispatchers.io) {
             try {
+                withContext(coroutineDispatchers.main) {
+                    result.value = Result.Loading
+                }
+                if (!networkHelper.isNetworkConnected()) {
+                    result.value = Result.ErrorNetwork("")
+                    return@launch
+                }
                 apiToCall()
             } catch (e: Exception) {
                 withContext(coroutineDispatchers.main) {

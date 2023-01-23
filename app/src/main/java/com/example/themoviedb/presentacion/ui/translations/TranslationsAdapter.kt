@@ -9,8 +9,7 @@ import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ItemJobBinding
 
 
-class TranslationsAdapter :
-    ListAdapter<String, TranslationsAdapter.ItemViewHolder>(DiffCallback) {
+class TranslationsAdapter : ListAdapter<String, TranslationsAdapter.ItemViewHolder>(DiffCallback) {
 
 
     class ItemViewHolder(private var binding: ItemJobBinding) :

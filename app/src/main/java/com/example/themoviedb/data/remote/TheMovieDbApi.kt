@@ -4,14 +4,16 @@ import com.example.themoviedb.domain.entities.remote.*
 import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
 import retrofit2.http.GET
 import com.example.themoviedb.domain.state.Result
+import retrofit2.http.Query
 
 interface TheMovieDbApi {
 
-    @GET("watch/providers/movie")
-    suspend fun getProviders(): MoviesProviders
 
     @GET("movie/popular")
-    suspend fun getPopulars(): PopularResponse
+    suspend fun getPopulars(@Query("page") page: String): PopularResponse
+
+    @GET("watch/providers/movie")
+    suspend fun getProviders(): MoviesProviders
 
     @GET("tv/popular")
     suspend fun getPopularTv(): TelevisionResponse

@@ -44,7 +44,7 @@ class HomeViewModel @Inject constructor(
                 return@launch
             }
             try {
-                val response = repositorio.getPopulars()
+                val response = repositorio.getPopulars("")
                 withContext(coroutineDispatchers.main) {
                     _providers.value = Result.Success(response)
                 }
@@ -68,7 +68,7 @@ class HomeViewModel @Inject constructor(
                 return@launch
             }
             try {
-                val response = repositorio.getPopulars()
+                val response = repositorio.getPopulars("")
                 withContext(coroutineDispatchers.main) {
                     _popularTvResponse.value = Result.Success(response)
                 }

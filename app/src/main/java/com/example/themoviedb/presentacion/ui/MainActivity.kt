@@ -47,12 +47,20 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarLayout.root.visible()
     }
 
-    fun showProgress() {
+    private fun showProgress() {
         binding.progressBar3.visible()
     }
 
     fun hideProgress() {
         binding.progressBar3.gone()
+    }
+
+    fun shouldShowProgress(isLoading: Boolean) {
+        if (isLoading) {
+            showProgress()
+        } else {
+            hideProgress()
+        }
     }
 
     fun changeTextToolbar(title: String) {

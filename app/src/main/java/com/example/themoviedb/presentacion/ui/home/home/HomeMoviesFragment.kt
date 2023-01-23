@@ -4,7 +4,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeMoviesBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
-import com.example.themoviedb.presentacion.ui.MainActivity
+import com.example.themoviedb.presentacion.ui.extensions.changeTitleToolbar
+import com.example.themoviedb.presentacion.ui.extensions.showToolbar
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -13,8 +14,8 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding>(R.layout.frag
     private lateinit var adapter: HomeMoviesViewPagerAdapter
 
     override fun setUpUi() {
-        (requireActivity() as MainActivity).showToolbar()
-        (requireActivity() as MainActivity).changeTextToolbar("Home")
+        showToolbar()
+        changeTitleToolbar("Home")
         with(binding) {
             adapter = HomeMoviesViewPagerAdapter(this@HomeMoviesFragment)
             viewPager.adapter = adapter
@@ -24,8 +25,7 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding>(R.layout.frag
     }
 
     private fun setOnPageChangeCallBack() {
-        binding.viewPager.registerOnPageChangeCallback(object :
-            ViewPager2.OnPageChangeCallback() {
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 when (position) {

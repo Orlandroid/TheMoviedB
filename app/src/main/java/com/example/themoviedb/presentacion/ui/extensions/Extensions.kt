@@ -15,16 +15,8 @@ import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.example.themoviedb.R
-import com.example.themoviedb.domain.state.Result
-import com.example.themoviedb.presentacion.ui.MainActivity
-import com.example.themoviedb.presentacion.ui.dialogs.DialogInfo.Companion.ERROR_MESSAGE
-import com.example.themoviedb.presentacion.ui.main.AlertDialogs
 import com.google.android.material.snackbar.Snackbar
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -41,74 +33,12 @@ fun View.displaySnack(
     snackBar.show()
 }
 
-
-fun Fragment.showErrorApi(wantExitFromView: Boolean = false) {
-    val dialog = AlertDialogs(ERROR_MESSAGE, getString(R.string.error_service))
-    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
-    if (wantExitFromView) {
-        findNavController().popBackStack()
-    }
-}
-
-fun Fragment.showErrorNetwork() {
-    val dialog = AlertDialogs(ERROR_MESSAGE, getString(R.string.verifica_conexion))
-    activity?.let { dialog.show(it.supportFragmentManager, "alertMessage") }
-}
-
-fun <T> Fragment.observeApiResult(
-    apiResult: LiveData<Result<T>>,
-    onLoading: () -> Unit = {},
-    onSuccess: () -> Unit = {},
-    emptyList: () -> Unit = {},
-    error: () -> Unit = {},
-    errorNetwork: () -> Unit = {}
-) {
-    apiResult.observe(viewLifecycleOwner) {
-        if (it is Result.Loading) {
-            onLoading()
-            (requireActivity() as MainActivity).showProgress()
-        } else {
-            (requireActivity() as MainActivity).hideProgress()
-        }
-        when (it) {
-            is Result.Success -> {
-                onSuccess()
-            }
-            is Result.EmptyList -> {
-                emptyList()
-            }
-            is Result.Error -> {
-                error()
-                showErrorApi()
-            }
-            is Result.ErrorNetwork -> {
-                errorNetwork()
-                showErrorNetwork()
-            }
-            else -> {}
-        }
-    }
-}
-
 fun View.showSnack(message: String) {
     Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
 
 fun Snackbar.action(message: String, listener: (View) -> Unit) {
     setAction(message, listener)
-}
-
-
-fun Fragment.navigate(accion: NavDirections) {
-    findNavController().navigate(accion)
-}
-
-fun View.navigate(accion: NavDirections) {
-    findNavController().navigate(accion)
-}
-
-fun Fragment.hideKeyboard() {
-    view?.let { activity?.hideKeyboard(it) }
 }
 
 fun Activity.hideKeyboard() {

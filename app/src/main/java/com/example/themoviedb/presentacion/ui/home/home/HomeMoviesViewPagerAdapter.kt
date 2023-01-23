@@ -2,10 +2,7 @@ package com.example.themoviedb.presentacion.ui.home.home
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.themoviedb.presentacion.ui.home.now_playing.NowPlayingFragment
-import com.example.themoviedb.presentacion.ui.home.popular.PopularFragment
-import com.example.themoviedb.presentacion.ui.home.top_rated.TopRatedFragment
-import com.example.themoviedb.presentacion.ui.home.upcoming.UpComingFragment
+import com.example.themoviedb.presentacion.ui.home.results.ResultsFragment
 
 class HomeMoviesViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -13,19 +10,26 @@ class HomeMoviesViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(frag
         return 4
     }
 
+    enum class CategoriesHome {
+        POPULAR,
+        NOW_PLAYING,
+        UP_COMING,
+        TOP_RATED
+    }
+
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                PopularFragment()
+                ResultsFragment(CategoriesHome.POPULAR)
             }
             1 -> {
-                NowPlayingFragment()
+                ResultsFragment(CategoriesHome.NOW_PLAYING)
             }
             2 -> {
-                UpComingFragment()
+                ResultsFragment(CategoriesHome.UP_COMING)
             }
             else -> {
-                TopRatedFragment()
+                ResultsFragment(CategoriesHome.TOP_RATED)
             }
         }
     }

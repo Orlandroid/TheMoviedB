@@ -1,17 +1,14 @@
 package com.example.themoviedb.presentacion.ui.people
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.themoviedb.data.Repository
 import com.example.themoviedb.data.di.CoroutineDispatchers
-import com.example.themoviedb.domain.entities.remote.JobsResponse
 import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
-import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseViewModel
+import com.example.themoviedb.presentacion.helpers.NetworkHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -20,7 +20,9 @@ class PeopleFragment : BaseFragment<FragmentPeopleBinding>(R.layout.fragment_peo
 
     override fun observerViewModel() {
         super.observerViewModel()
-        observeApiResult(viewModel.peoplePopularResponse)
+        observeApiResult(viewModel.peoplePopularResponse){
+
+        }
     }
 
 }
