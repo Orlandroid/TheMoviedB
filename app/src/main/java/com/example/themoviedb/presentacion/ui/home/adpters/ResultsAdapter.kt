@@ -1,11 +1,16 @@
 package com.example.themoviedb.presentacion.ui.home.adpters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ItemResultBinding
 import com.example.themoviedb.domain.entities.remote.Result
-import com.example.themoviedb.presentacion.helpers.loadImage
+import com.example.themoviedb.presentacion.util.ImageUtil
+import com.example.themoviedb.presentacion.util.getAverageInCents
 
 class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
 
@@ -19,14 +24,24 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemResultBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(result: Result) {
             with(binding) {
-                imageResult.loadImage(result.backdrop_path)
-                title.text=result.title
-                fecha.text=result.release_date
+                val imageUtil = ImageUtil()
+                title.text = result.title
+                fecha.text = result.release_date
+                progressBar.progress = getAverageInCents(result.vote_average)
+                progressPorcent.text = "${getAverageInCents(result.vote_average)} %"
+                result.backdrop_path?.let { backdropPath ->
+                    Glide.with(itemView.context)
+                        .load(imageUtil.getBaseUrlImagePoster(urlImage = backdropPath))
+                        .transition(DrawableTransitionOptions.withCrossFade())
+                        .placeholder(R.drawable.loading_animation).into(imageResult)
+                }
             }
         }
     }
+
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
@@ -39,7 +54,6 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
     }
 
     override fun getItemCount() = listOfResults.size
-
 
 
 }

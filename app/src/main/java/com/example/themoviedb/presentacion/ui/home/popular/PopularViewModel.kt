@@ -1,4 +1,4 @@
-package com.example.themoviedb.presentacion.ui.home
+package com.example.themoviedb.presentacion.ui.home.popular
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,60 +15,30 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
-    private val repositorio: Repository,
+class PopularViewModel @Inject constructor(
+    private val repository: Repository,
     private val coroutineDispatchers: CoroutineDispatchers,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
-
-    private val errorNetwork = "Error verifica tu conexion"
-
-    private val _providers = MutableLiveData<Result<PopularResponse>>()
-    val providers: LiveData<Result<PopularResponse>>
-        get() = _providers
 
     private val _popularTvResponse = MutableLiveData<Result<PopularResponse>>()
     val popularTvResponse: LiveData<Result<PopularResponse>>
         get() = _popularTvResponse
 
 
-    fun getProviders() {
-        viewModelScope.launch(coroutineDispatchers.io) {
-            withContext(coroutineDispatchers.main) {
-                _providers.value = Result.Loading
-            }
-            if (!networkHelper.isNetworkConnected()) {
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.ErrorNetwork(errorNetwork)
-                }
-                return@launch
-            }
-            try {
-                val response = repositorio.getPopulars()
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.Success(response)
-                }
-            } catch (e: Exception) {
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.Error(e.message ?: "Error app")
-                }
-            }
-        }
-    }
-
-    fun getPopularTv(){
+    fun getPopularTv() {
         viewModelScope.launch(coroutineDispatchers.io) {
             withContext(coroutineDispatchers.main) {
                 _popularTvResponse.value = Result.Loading
             }
             if (!networkHelper.isNetworkConnected()) {
                 withContext(coroutineDispatchers.main) {
-                    _popularTvResponse.value = Result.ErrorNetwork(errorNetwork)
+                    _popularTvResponse.value = Result.ErrorNetwork("")
                 }
                 return@launch
             }
             try {
-                val response = repositorio.getPopulars()
+                val response = repository.getPopulars()
                 withContext(coroutineDispatchers.main) {
                     _popularTvResponse.value = Result.Success(response)
                 }

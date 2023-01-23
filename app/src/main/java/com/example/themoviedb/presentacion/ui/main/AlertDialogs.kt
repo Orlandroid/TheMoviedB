@@ -1,20 +1,22 @@
-package com.example.themoviedb.presentacion.ui.dialogs
+package com.example.themoviedb.presentacion.ui.main
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.*
+import androidx.fragment.app.DialogFragment
 import com.example.themoviedb.R
-import com.example.themoviedb.databinding.AlertDialogInfoBinding
-import com.example.themoviedb.presentacion.base.BaseDialog
+import com.example.themoviedb.databinding.AlertDialogMessagesBinding
 
 
-class DialogInfo(
+class AlertDialogs(
     private val kindOfMessage: Int = SUCCES_MESSAGE,
-    private val messageBody: String = "",
-    private val clickOnAccept: ClickOnAccept? = null,
+    private val messageBody: String,
+    private val clikOnAccept: ClickOnAccept? = null,
     private val isTwoButtonDialog: Boolean = false
 ) :
-    BaseDialog<AlertDialogInfoBinding>(R.layout.alert_dialog_info) {
+    DialogFragment() {
 
+    private lateinit var binding: AlertDialogMessagesBinding
 
     companion object {
         const val SUCCES_MESSAGE_COLOR = R.color.succes
@@ -25,36 +27,58 @@ class DialogInfo(
         const val WARNING_MESSAGE = 1
         const val ERROR_MESSAGE = 2
         const val INFO_MESSAGE = 3
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    interface ClickOnAccept {
+        fun clickOnAccept()
+        fun clickOnCancel()
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = AlertDialogMessagesBinding.inflate(layoutInflater, container, false)
         setUpUi()
+        return binding.root
     }
 
-    override fun setUpUi() {
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        isCancelable = false
+        return dialog
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+    }
+
+
+    private fun setUpUi() {
         with(binding) {
             buttonAceptarOneButton.setOnClickListener {
-                clickOnAccept?.clickOnAccept()
+                clikOnAccept?.clickOnAccept()
                 dialog?.dismiss()
             }
             buttonAceptar.setOnClickListener {
-                clickOnAccept?.clickOnAccept()
+                clikOnAccept?.clickOnAccept()
                 dialog?.dismiss()
             }
             buttonCancelar.setOnClickListener {
-                clickOnAccept?.clickOnCancel()
+                clikOnAccept?.clickOnCancel()
                 dialog?.dismiss()
             }
             binding.bodyMessage.text = messageBody
         }
         setKindOfMessage()
         setKindOfView(isTwoButtonDialog)
-    }
-
-    interface ClickOnAccept {
-        fun clickOnAccept()
-        fun clickOnCancel()
     }
 
     private fun setKindOfView(isTwoButtonDialog: Boolean) {
@@ -88,11 +112,10 @@ class DialogInfo(
                 binding.titleHeader.text = "Error"
             }
             3 -> {
-                binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE_COLOR))
+                binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE))
                 binding.titleHeader.text = "Info"
             }
         }
     }
-
 
 }

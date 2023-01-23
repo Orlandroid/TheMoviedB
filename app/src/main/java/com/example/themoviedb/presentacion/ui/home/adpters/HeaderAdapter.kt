@@ -1,4 +1,4 @@
-package com.example.themoviedb.ui.home.adpters
+package com.example.themoviedb.presentacion.ui.home.adpters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

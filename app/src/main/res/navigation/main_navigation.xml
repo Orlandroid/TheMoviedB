@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeMoviesFragment">
 
-    <fragment
-        tools:layout="@layout/fragment_home"
-        android:id="@+id/homeFragment"
-        android:name="com.example.themoviedb.presentacion.ui.home.HomeFragment"
-        android:label="HomeFragment" />
     <fragment
         android:id="@+id/appartment_jobs"
         tools:layout="@layout/fragment_apartments"
@@ -33,4 +28,14 @@
         android:id="@+id/translationsFragment"
         android:name="com.example.themoviedb.presentacion.ui.translations.TranslationsFragment"
         android:label="TranslationsFragment" />
+    <fragment
+        tools:layout="@layout/fragment_home_movies"
+        android:id="@+id/homeMoviesFragment"
+        android:name="com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragment"
+        android:label="HomeMoviesFragment" />
+    <fragment
+        tools:layout="@layout/fragment_people"
+        android:id="@+id/peopleFragment"
+        android:name="com.example.themoviedb.presentacion.ui.people.PeopleFragment"
+        android:label="PeopleFragment" />
 </navigation>

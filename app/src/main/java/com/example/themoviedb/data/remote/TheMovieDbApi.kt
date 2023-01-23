@@ -1,6 +1,7 @@
 package com.example.themoviedb.data.remote
 
 import com.example.themoviedb.domain.entities.remote.*
+import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
 import retrofit2.http.GET
 import com.example.themoviedb.domain.state.Result
 
@@ -14,6 +15,18 @@ interface TheMovieDbApi {
 
     @GET("tv/popular")
     suspend fun getPopularTv(): TelevisionResponse
+
+    @GET("configuration/jobs")
+    suspend fun getJobs(): List<JobsResponse>
+
+    @GET("configuration/primary_translations")
+    suspend fun getTranslation(): List<String>
+
+    @GET("configuration/languages")
+    suspend fun getLanguages(): List<Languajes>
+
+    @GET("person/popular")
+    suspend fun getPersonsPopular(): PeoplePopularResponse
 
     @GET("movie/upcoming")
     suspend fun getUpComming(): Result<String>
@@ -32,13 +45,4 @@ interface TheMovieDbApi {
 
     @GET("list/{id}")
     suspend fun getAllMoviesByUserId(): Result<String>
-
-    @GET("configuration/jobs")
-    suspend fun getJobs(): List<JobsResponse>
-
-    @GET("configuration/primary_translations")
-    suspend fun getTranslation(): List<String>
-
-    @GET("configuration/languages")
-    suspend fun getLanguages(): List<Languajes>
 }

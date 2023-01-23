@@ -1,22 +1,20 @@
-package com.example.themoviedb.presentacion.ui.home
+package com.example.themoviedb.presentacion.ui.home.home
 
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeBinding
-import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.domain.state.Result
+import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.dialogs.Dialogos
 import com.example.themoviedb.presentacion.ui.home.adpters.ChipsAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.HomeAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
-import com.example.themoviedb.ui.home.adpters.HeaderAdapter
+import com.example.themoviedb.presentacion.ui.home.adpters.HeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

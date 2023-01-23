@@ -7,6 +7,7 @@ import com.example.themoviedb.domain.entities.remote.JobsResponse
 import com.example.themoviedb.domain.entities.remote.MoviesProviders
 import com.example.themoviedb.domain.entities.remote.PopularResponse
 import com.example.themoviedb.domain.entities.remote.TelevisionResponse
+import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -59,6 +60,8 @@ class Repository @Inject constructor(
     }
 
     suspend fun getLanguages() = remoteDataSource.getLanguages()
+
+    suspend fun getPersonsPopular(): PeoplePopularResponse = remoteDataSource.getPersonsPopular()
 
     suspend fun getProviders(): MoviesProviders = remoteDataSource.getProviders()
 

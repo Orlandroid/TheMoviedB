@@ -1,7 +1,6 @@
 package com.example.themoviedb.presentacion.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -46,6 +45,18 @@ class MainActivity : AppCompatActivity() {
 
     fun showToolbar() {
         binding.toolbarLayout.root.visible()
+    }
+
+    fun showProgress() {
+        binding.progressBar3.visible()
+    }
+
+    fun hideProgress() {
+        binding.progressBar3.gone()
+    }
+
+    fun changeTextToolbar(title: String) {
+        binding.toolbarLayout.toolbarTitle.text = title
     }
 
     private fun setUpDrawer() {
