@@ -2,10 +2,10 @@ package com.example.themoviedb.presentacion.ui.home.results
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.themoviedb.data.Repository
 import com.example.themoviedb.data.di.CoroutineDispatchers
+import com.example.themoviedb.domain.entities.remote.PopularMovieResponse
 import com.example.themoviedb.domain.entities.remote.PopularResponse
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseViewModel
@@ -23,8 +23,8 @@ class ResultsViewModel @Inject constructor(
     networkHelper: NetworkHelper
 ) : BaseViewModel(coroutineDispatchers, networkHelper) {
 
-    private val _popularResponse = MutableLiveData<Result<PopularResponse>>()
-    val popularResponse: LiveData<Result<PopularResponse>>
+    private val _popularResponse = MutableLiveData<Result<PopularMovieResponse>>()
+    val popularResponse: LiveData<Result<PopularMovieResponse>>
         get() = _popularResponse
 
 

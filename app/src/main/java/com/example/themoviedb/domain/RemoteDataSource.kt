@@ -5,7 +5,7 @@ import com.example.themoviedb.domain.entities.remote.people.PeoplePopularRespons
 
 interface RemoteDataSource {
     suspend fun getProviders(): MoviesProviders
-    suspend fun getPopulars(page:String): PopularResponse
+    suspend fun getPopulars(page:String): PopularMovieResponse
     suspend fun getPopularTv(): TelevisionResponse
     suspend fun getJobs(): List<JobsResponse>
     suspend fun getTranslation(): List<String>

@@ -32,31 +32,7 @@ class HomeViewModel @Inject constructor(
         get() = _popularTvResponse
 
 
-    fun getProviders() {
-        viewModelScope.launch(coroutineDispatchers.io) {
-            withContext(coroutineDispatchers.main) {
-                _providers.value = Result.Loading
-            }
-            if (!networkHelper.isNetworkConnected()) {
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.ErrorNetwork(errorNetwork)
-                }
-                return@launch
-            }
-            try {
-                val response = repositorio.getPopulars("")
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.Success(response)
-                }
-            } catch (e: Exception) {
-                withContext(coroutineDispatchers.main) {
-                    _providers.value = Result.Error(e.message ?: "Error app")
-                }
-            }
-        }
-    }
-
-    fun getPopularTv(){
+    fun getPopularTv() {
         viewModelScope.launch(coroutineDispatchers.io) {
             withContext(coroutineDispatchers.main) {
                 _popularTvResponse.value = Result.Loading
@@ -70,7 +46,7 @@ class HomeViewModel @Inject constructor(
             try {
                 val response = repositorio.getPopulars("")
                 withContext(coroutineDispatchers.main) {
-                    _popularTvResponse.value = Result.Success(response)
+                    //_popularTvResponse.value = Result.Success(response)
                 }
             } catch (e: Exception) {
                 withContext(coroutineDispatchers.main) {

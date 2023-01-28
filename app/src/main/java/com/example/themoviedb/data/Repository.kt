@@ -3,10 +3,7 @@ package com.example.themoviedb.data
 import com.example.themoviedb.data.db.LocalDataSourceImpl
 import com.example.themoviedb.data.remote.RemoteDataSourceImpl
 import com.example.themoviedb.domain.entities.local.Department
-import com.example.themoviedb.domain.entities.remote.JobsResponse
-import com.example.themoviedb.domain.entities.remote.MoviesProviders
-import com.example.themoviedb.domain.entities.remote.PopularResponse
-import com.example.themoviedb.domain.entities.remote.TelevisionResponse
+import com.example.themoviedb.domain.entities.remote.*
 import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
 import javax.inject.Inject
 
@@ -15,7 +12,7 @@ class Repository @Inject constructor(
     private val localDataSource: LocalDataSourceImpl
 ) {
 
-    suspend fun getPopulars(page:String): PopularResponse = remoteDataSource.getPopulars(page)
+    suspend fun getPopulars(page:String):PopularMovieResponse = remoteDataSource.getPopulars(page)
 
 
     suspend fun getDepartments(): List<JobsResponse> {
