@@ -46,7 +46,7 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
                 viewModel.getPopulars(page = currentPage.toString())
             }
             HomeMoviesViewPagerAdapter.CategoriesHome.NOW_PLAYING -> {
-
+                viewModel.nowPlayingMovie(page = currentPage.toString())
             }
             HomeMoviesViewPagerAdapter.CategoriesHome.UP_COMING -> {
 
@@ -61,6 +61,12 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
     override fun observerViewModel() {
         super.observerViewModel()
         observeApiResult(viewModel.popularResponse, hasProgressTheView = true) {
+            totalPages = it.total_pages
+            resultsList.addAll(it.results)
+            popularAdapter.setData(resultsList)
+            canCallToTheNextPage = true
+        }
+        observeApiResult(viewModel.nowPlayingResponse, hasProgressTheView = true) {
             totalPages = it.total_pages
             resultsList.addAll(it.results)
             popularAdapter.setData(resultsList)

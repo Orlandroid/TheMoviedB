@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.themoviedb.data.Repository
 import com.example.themoviedb.data.di.CoroutineDispatchers
 import com.example.themoviedb.domain.entities.remote.PopularMovieResponse
-import com.example.themoviedb.domain.entities.remote.PopularResponse
 import com.example.themoviedb.domain.state.Result
 import com.example.themoviedb.presentacion.base.BaseViewModel
 import com.example.themoviedb.presentacion.helpers.NetworkHelper
@@ -28,12 +27,28 @@ class ResultsViewModel @Inject constructor(
         get() = _popularResponse
 
 
+    private val _nowPlayingResponse = MutableLiveData<Result<PopularMovieResponse>>()
+    val nowPlayingResponse: LiveData<Result<PopularMovieResponse>>
+        get() = _nowPlayingResponse
+
+
     fun getPopulars(page: String) {
         viewModelScope.launch {
             safeApiCall(_popularResponse, coroutineDispatchers) {
                 val response = repository.getPopulars(page)
                 withContext(Dispatchers.Main) {
                     _popularResponse.value = Result.Success(response)
+                }
+            }
+        }
+    }
+
+    fun nowPlayingMovie(page: String) {
+        viewModelScope.launch {
+            safeApiCall(_nowPlayingResponse, coroutineDispatchers) {
+                val response = repository.nowPlaying(page)
+                withContext(Dispatchers.Main) {
+                    _nowPlayingResponse.value = Result.Success(response)
                 }
             }
         }

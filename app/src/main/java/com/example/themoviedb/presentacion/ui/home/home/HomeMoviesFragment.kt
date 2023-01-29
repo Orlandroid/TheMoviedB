@@ -15,10 +15,11 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding>(R.layout.frag
 
     override fun setUpUi() {
         showToolbar()
-        changeTitleToolbar("Home")
+        changeTitleToolbar("Movies")
         with(binding) {
             adapter = HomeMoviesViewPagerAdapter(this@HomeMoviesFragment)
             viewPager.adapter = adapter
+            viewPager.isUserInputEnabled = false
             setUpTabNames()
             setOnPageChangeCallBack()
         }

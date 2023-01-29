@@ -24,6 +24,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getLanguages() = theMovieDbApi.getLanguages()
 
     override suspend fun getPersonsPopular() = theMovieDbApi.getPersonsPopular()
+    override suspend fun nowPlaying(page: String): PopularMovieResponse  = theMovieDbApi.nowPlaying(page)
 
 
 }
