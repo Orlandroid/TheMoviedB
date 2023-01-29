@@ -12,11 +12,13 @@ class Repository @Inject constructor(
     private val localDataSource: LocalDataSourceImpl
 ) {
 
-    suspend fun getPopulars(page:String):PopularMovieResponse = remoteDataSource.getPopulars(page)
+    suspend fun getPopulars(page: String): PopularMovieResponse = remoteDataSource.getPopulars(page)
 
     suspend fun nowPlaying(page: String): PopularMovieResponse = remoteDataSource.nowPlaying(page)
 
     suspend fun upComing(page: String) = remoteDataSource.upComing(page)
+
+    suspend fun topRated(page: String) = remoteDataSource.topRated(page)
 
 
     suspend fun getDepartments(): List<JobsResponse> {

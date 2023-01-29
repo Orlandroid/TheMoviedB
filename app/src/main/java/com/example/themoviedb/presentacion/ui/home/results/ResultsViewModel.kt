@@ -35,6 +35,10 @@ class ResultsViewModel @Inject constructor(
     val upComingResponse: LiveData<Result<PopularMovieResponse>>
         get() = _upComingResponse
 
+    private val _topRatedResponse = MutableLiveData<Result<PopularMovieResponse>>()
+    val topRatedResponse: LiveData<Result<PopularMovieResponse>>
+        get() = _topRatedResponse
+
 
     fun getPopulars(page: String) {
         viewModelScope.launch {
@@ -64,6 +68,17 @@ class ResultsViewModel @Inject constructor(
                 val response = repository.upComing(page)
                 withContext(Dispatchers.Main) {
                     _upComingResponse.value = Result.Success(response)
+                }
+            }
+        }
+    }
+
+    fun topRated(page: String) {
+        viewModelScope.launch {
+            safeApiCall(_topRatedResponse, coroutineDispatchers) {
+                val response = repository.topRated(page)
+                withContext(Dispatchers.Main) {
+                    _topRatedResponse.value = Result.Success(response)
                 }
             }
         }

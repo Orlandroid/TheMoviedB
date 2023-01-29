@@ -53,7 +53,7 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
                 viewModel.upComing(page = currentPage.toString())
             }
             HomeMoviesViewPagerAdapter.CategoriesHome.TOP_RATED -> {
-
+                viewModel.topRated(page = currentPage.toString())
             }
         }
     }
@@ -68,6 +68,9 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
             setData(it)
         }
         observeApiResult(viewModel.upComingResponse, hasProgressTheView = true) {
+            setData(it)
+        }
+        observeApiResult(viewModel.topRatedResponse, hasProgressTheView = true) {
             setData(it)
         }
     }

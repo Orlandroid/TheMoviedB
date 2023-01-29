@@ -2,7 +2,6 @@ package com.example.themoviedb.data.remote
 
 
 import com.example.themoviedb.domain.RemoteDataSource
-import com.example.themoviedb.domain.entities.remote.PopularMovieResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -13,7 +12,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getProviders() = theMovieDbApi.getProviders()
 
-    override suspend fun getPopulars(page:String):PopularMovieResponse = theMovieDbApi.getPopulars(page)
+    override suspend fun getPopulars(page: String) = theMovieDbApi.getPopulars(page)
 
     override suspend fun getPopularTv() = theMovieDbApi.getPopularTv()
 
@@ -24,8 +23,9 @@ class RemoteDataSourceImpl @Inject constructor(
     override suspend fun getLanguages() = theMovieDbApi.getLanguages()
 
     override suspend fun getPersonsPopular() = theMovieDbApi.getPersonsPopular()
-    override suspend fun nowPlaying(page: String): PopularMovieResponse  = theMovieDbApi.nowPlaying(page)
+    override suspend fun nowPlaying(page: String) = theMovieDbApi.nowPlaying(page)
     override suspend fun upComing(page: String) = theMovieDbApi.upComing(page)
+    override suspend fun topRated(page: String) = theMovieDbApi.topRated(page)
 
 
 }
