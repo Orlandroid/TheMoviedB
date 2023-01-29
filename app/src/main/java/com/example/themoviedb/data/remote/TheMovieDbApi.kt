@@ -15,6 +15,9 @@ interface TheMovieDbApi {
     @GET("movie/now_playing")
     suspend fun nowPlaying(@Query("page") page: String): PopularMovieResponse
 
+    @GET("movie/upcoming")
+    suspend fun upComing(@Query("page") page: String): PopularMovieResponse
+
     @GET("watch/providers/movie")
     suspend fun getProviders(): MoviesProviders
 

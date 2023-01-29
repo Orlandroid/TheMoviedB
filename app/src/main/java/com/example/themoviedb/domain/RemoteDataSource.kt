@@ -12,4 +12,5 @@ interface RemoteDataSource {
     suspend fun getLanguages(): List<Languajes>
     suspend fun getPersonsPopular(): PeoplePopularResponse
     suspend fun nowPlaying(page: String): PopularMovieResponse
+    suspend fun upComing(page: String): PopularMovieResponse
 }

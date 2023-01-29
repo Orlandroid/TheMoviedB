@@ -16,6 +16,8 @@ class Repository @Inject constructor(
 
     suspend fun nowPlaying(page: String): PopularMovieResponse = remoteDataSource.nowPlaying(page)
 
+    suspend fun upComing(page: String) = remoteDataSource.upComing(page)
+
 
     suspend fun getDepartments(): List<JobsResponse> {
         val allIDeparments = localDataSource.getAllApartments()

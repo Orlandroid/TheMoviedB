@@ -3,6 +3,7 @@ package com.example.themoviedb.presentacion.ui.home.results
 import androidx.fragment.app.viewModels
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentResultsBinding
+import com.example.themoviedb.domain.entities.remote.PopularMovieResponse
 import com.example.themoviedb.domain.entities.remote.Result
 import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.extensions.myOnScrolled
@@ -49,7 +50,7 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
                 viewModel.nowPlayingMovie(page = currentPage.toString())
             }
             HomeMoviesViewPagerAdapter.CategoriesHome.UP_COMING -> {
-
+                viewModel.upComing(page = currentPage.toString())
             }
             HomeMoviesViewPagerAdapter.CategoriesHome.TOP_RATED -> {
 
@@ -61,16 +62,21 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
     override fun observerViewModel() {
         super.observerViewModel()
         observeApiResult(viewModel.popularResponse, hasProgressTheView = true) {
-            totalPages = it.total_pages
-            resultsList.addAll(it.results)
-            popularAdapter.setData(resultsList)
-            canCallToTheNextPage = true
+            setData(it)
         }
         observeApiResult(viewModel.nowPlayingResponse, hasProgressTheView = true) {
-            totalPages = it.total_pages
-            resultsList.addAll(it.results)
-            popularAdapter.setData(resultsList)
-            canCallToTheNextPage = true
+            setData(it)
+        }
+        observeApiResult(viewModel.upComingResponse, hasProgressTheView = true) {
+            setData(it)
         }
     }
+
+    private fun setData(data: PopularMovieResponse) {
+        totalPages = data.total_pages
+        resultsList.addAll(data.results)
+        popularAdapter.setData(resultsList)
+        canCallToTheNextPage = true
+    }
+
 }

@@ -40,12 +40,13 @@ class NowPlayingFragment : BaseFragment<FragmentResultsBinding>(R.layout.fragmen
 
     override fun observerViewModel() {
         super.observerViewModel()
+        /*
         observeApiResult(viewModel.nowPlayingResponse, hasProgressTheView = true) {
             totalPages = it.total_pages
             resultsList.addAll(it.results)
             popularAdapter.setData(resultsList)
             canCallToTheNextPage = true
-        }
+        }*/
     }
 
 
