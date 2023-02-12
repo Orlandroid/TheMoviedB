@@ -1,7 +1,11 @@
 package com.example.themoviedb.domain
 
 import com.example.themoviedb.domain.entities.remote.*
+import com.example.themoviedb.domain.entities.remote.movies.MovieDetailResponse
 import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
+import com.example.themoviedb.domain.state.Result
+import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface RemoteDataSource {
     suspend fun getProviders(): MoviesProviders
@@ -14,4 +18,6 @@ interface RemoteDataSource {
     suspend fun nowPlaying(page: String): PopularMovieResponse
     suspend fun upComing(page: String): PopularMovieResponse
     suspend fun topRated(page: String): PopularMovieResponse
+    suspend fun getDetailMovie(movieId: Int): MovieDetailResponse
+
 }

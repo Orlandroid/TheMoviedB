@@ -14,6 +14,8 @@ class Repository @Inject constructor(
 
     suspend fun getPopulars(page: String): PopularMovieResponse = remoteDataSource.getPopulars(page)
 
+    suspend fun getDetailMovie(movieId: Int) = remoteDataSource.getDetailMovie(movieId)
+
     suspend fun nowPlaying(page: String): PopularMovieResponse = remoteDataSource.nowPlaying(page)
 
     suspend fun upComing(page: String) = remoteDataSource.upComing(page)

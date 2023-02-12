@@ -32,10 +32,18 @@
         tools:layout="@layout/fragment_home_movies"
         android:id="@+id/homeMoviesFragment"
         android:name="com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragment"
-        android:label="HomeMoviesFragment" />
+        android:label="HomeMoviesFragment" >
+        <action
+            android:id="@+id/action_homeMoviesFragment_to_peopleFragment"
+            app:destination="@id/peopleFragment" />
+    </fragment>
     <fragment
-        tools:layout="@layout/fragment_people"
+        tools:layout="@layout/fragment_movie_detail"
         android:id="@+id/peopleFragment"
-        android:name="com.example.themoviedb.presentacion.ui.people.PeopleFragment"
-        android:label="PeopleFragment" />
+        android:name="com.example.themoviedb.presentacion.ui.moviedetail.MovieDetailFragment"
+        android:label="PeopleFragment" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

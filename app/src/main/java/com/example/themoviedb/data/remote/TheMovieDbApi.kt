@@ -1,9 +1,11 @@
 package com.example.themoviedb.data.remote
 
 import com.example.themoviedb.domain.entities.remote.*
+import com.example.themoviedb.domain.entities.remote.movies.MovieDetailResponse
 import com.example.themoviedb.domain.entities.remote.people.PeoplePopularResponse
 import retrofit2.http.GET
 import com.example.themoviedb.domain.state.Result
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TheMovieDbApi {
@@ -14,6 +16,9 @@ interface TheMovieDbApi {
 
     @GET("movie/now_playing")
     suspend fun nowPlaying(@Query("page") page: String): PopularMovieResponse
+
+    @GET("movie/{movie_id}")
+    suspend fun getDetailMovie(@Path("movie_id") movieId: Int): MovieDetailResponse
 
     @GET("movie/upcoming")
     suspend fun upComing(@Query("page") page: String): PopularMovieResponse
@@ -48,8 +53,6 @@ interface TheMovieDbApi {
     @GET("movie/latest")
     suspend fun getLasted(): Result<String>
 
-    @GET("/movie/{movie_id}")
-    suspend fun getDetailMovie(): Result<String>
 
     @GET("/genre/movie/list")
     suspend fun getGeneres(): Result<String>

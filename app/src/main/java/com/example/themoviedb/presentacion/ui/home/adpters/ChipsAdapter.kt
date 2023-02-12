@@ -18,14 +18,7 @@ class ChipsAdapter : RecyclerView.Adapter<ChipsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemChipBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(element: Element) {
-            with(binding) {
-                chip.text = element.message
-                if (element.isCheck) {
-                    chip.setChipBackgroundColorResource(R.color.blue)
-                } else {
-                    chip.setChipBackgroundColorResource(R.color.gris)
-                }
-            }
+
         }
     }
 

@@ -35,6 +35,8 @@ fun Fragment.changeTitleToolbar(title: String) {
     (requireActivity() as MainActivity).changeTextToolbar(title)
 }
 
+fun Fragment.getPackageName() = context?.packageName.toString()
+
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
 }

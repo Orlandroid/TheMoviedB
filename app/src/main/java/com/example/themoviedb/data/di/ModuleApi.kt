@@ -22,12 +22,15 @@ import javax.inject.Singleton
 object ModuleApi {
 
     private const val BASE_URL_V3 = "https://api.themoviedb.org/3/"
+    private const val ENABLE_RETROFIT_INTERCEPTOR_BODY = true
 
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            if (ENABLE_RETROFIT_INTERCEPTOR_BODY) {
+                level = HttpLoggingInterceptor.Level.BODY
+            }
         }
         return OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)

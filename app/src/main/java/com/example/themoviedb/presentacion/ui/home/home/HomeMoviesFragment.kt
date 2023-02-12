@@ -1,6 +1,5 @@
 package com.example.themoviedb.presentacion.ui.home.home
 
-import androidx.viewpager2.widget.ViewPager2
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeMoviesBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
@@ -21,30 +20,8 @@ class HomeMoviesFragment : BaseFragment<FragmentHomeMoviesBinding>(R.layout.frag
             viewPager.adapter = adapter
             viewPager.isUserInputEnabled = false
             setUpTabNames()
-            setOnPageChangeCallBack()
+
         }
-    }
-
-    private fun setOnPageChangeCallBack() {
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                when (position) {
-                    0 -> {
-
-                    }
-                    1 -> {
-
-                    }
-                    2 -> {
-
-                    }
-                    3 -> {
-
-                    }
-                }
-            }
-        })
     }
 
     private fun setUpTabNames() {

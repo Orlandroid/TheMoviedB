@@ -9,10 +9,12 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ItemResultBinding
 import com.example.themoviedb.domain.entities.remote.Result
+import com.example.themoviedb.presentacion.ui.extensions.click
 import com.example.themoviedb.presentacion.util.ImageUtil
 import com.example.themoviedb.presentacion.util.getAverageInCents
 
-class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
+class ResultsAdapter(private val clickOnMovie: (result: Result) -> Unit = {}) :
+    RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
 
     private var listOfResults = listOf<Result>()
 
@@ -50,7 +52,11 @@ class ResultsAdapter : RecyclerView.Adapter<ResultsAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bind(listOfResults[position])
+        val item = listOfResults[position]
+        viewHolder.bind(item)
+        viewHolder.itemView.click {
+            clickOnMovie(item)
+        }
     }
 
     override fun getItemCount() = listOfResults.size

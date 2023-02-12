@@ -1,24 +1,22 @@
-package com.example.themoviedb.presentacion.ui.home.adpters
+package com.example.themoviedb.presentacion.ui.chipscomponente
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ItemChipBinding
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+class ChipsAdapter : RecyclerView.Adapter<ChipsAdapter.ViewHolder>() {
 
-    private var listOfMenu = listOf<Element>()
+    private var listOfMenu = listOf<ChipElement>()
 
-    fun setData(posts: List<Element>) {
+    fun setData(posts: List<ChipElement>) {
         listOfMenu = posts
         notifyDataSetChanged()
     }
 
 
     class ViewHolder(private val binding: ItemChipBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(element: Element) {
-
+        fun bind(element: ChipElement) {
         }
     }
 
@@ -39,7 +37,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
     override fun getItemCount() = listOfMenu.size
 
 
-    data class Element(
+    data class ChipElement(
         val message: String,
         val textColor: Int = 0,
         val background: Int = 0,

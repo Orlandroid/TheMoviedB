@@ -1,6 +1,8 @@
 package com.example.themoviedb.presentacion.ui.home.results
 
+import android.util.Log
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentResultsBinding
 import com.example.themoviedb.domain.entities.remote.PopularMovieResponse
@@ -9,6 +11,7 @@ import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.extensions.myOnScrolled
 import com.example.themoviedb.presentacion.ui.extensions.observeApiResult
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
+import com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragmentDirections
 import com.example.themoviedb.presentacion.ui.home.home.HomeMoviesViewPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,13 +25,14 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
     private var totalPages = 0
     private var canCallToTheNextPage = true
     private var resultsList: ArrayList<Result> = arrayListOf()
-
-    private val popularAdapter by lazy {
-        ResultsAdapter()
-    }
+    private var popularAdapter: ResultsAdapter? = null
 
     override fun setUpUi() = with(binding) {
-        getCurrentCategory()
+        popularAdapter = ResultsAdapter {
+            val action =
+                HomeMoviesFragmentDirections.actionHomeMoviesFragmentToPeopleFragment(it.id)
+            findNavController().navigate(action)
+        }
         recycler.adapter = popularAdapter
         recycler.myOnScrolled {
             if (!canCallToTheNextPage) return@myOnScrolled
@@ -38,7 +42,7 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
                 getCurrentCategory()
             }
         }
-
+        getCurrentCategory()
     }
 
     private fun getCurrentCategory() {
@@ -78,7 +82,7 @@ class ResultsFragment(private val categories: HomeMoviesViewPagerAdapter.Categor
     private fun setData(data: PopularMovieResponse) {
         totalPages = data.total_pages
         resultsList.addAll(data.results)
-        popularAdapter.setData(resultsList)
+        popularAdapter?.setData(resultsList)
         canCallToTheNextPage = true
     }
 
