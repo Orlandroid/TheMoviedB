@@ -65,10 +65,9 @@ fun <T> Fragment.observeApiResult(
         }
 
         val isLoading = it is Result.Loading
+        handleStatusOnLoading(isLoading)
         if (hasProgressTheView) {
             shouldShowProgress(isLoading)
-        } else {
-            handleStatusOnLoading(isLoading)
         }
         when (it) {
             is Result.Success -> {

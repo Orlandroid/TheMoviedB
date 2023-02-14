@@ -1,6 +1,5 @@
 package com.example.themoviedb.presentacion.ui.home.results
 
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.themoviedb.R

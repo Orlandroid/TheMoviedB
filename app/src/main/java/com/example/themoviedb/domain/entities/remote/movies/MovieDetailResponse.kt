@@ -2,7 +2,7 @@ package com.example.themoviedb.domain.entities.remote.movies
 
 data class MovieDetailResponse(
     val adult: Boolean,
-    val backdrop_path: String,
+    val backdrop_path: String?,
     val belongs_to_collection: Any,
     val budget: Int,
     val genres: List<Genre>,
@@ -24,7 +24,7 @@ data class MovieDetailResponse(
     val tagline: String,
     val title: String,
     val video: Boolean,
-    val vote_average: Double,
+    val vote_average: Float,
     val vote_count: Int
 )
 

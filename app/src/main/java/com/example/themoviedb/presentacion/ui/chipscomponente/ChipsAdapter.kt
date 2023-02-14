@@ -17,6 +17,7 @@ class ChipsAdapter : RecyclerView.Adapter<ChipsAdapter.ViewHolder>() {
 
     class ViewHolder(private val binding: ItemChipBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(element: ChipElement) {
+            binding.chip.text = element.message
         }
     }
 

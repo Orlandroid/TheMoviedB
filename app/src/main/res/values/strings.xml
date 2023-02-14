@@ -22,12 +22,14 @@
     <string name="open">Open</string>
     <string name="languajes">Languajes</string>
     <string name="peoples">Peoples</string>
+    <string name="movie_detail">Detalle Pelicula</string>
     <string name="description">Description</string>
     <string name="polular">Popular</string>
     <string name="now_playing">Now Playing</string>
     <string name="up_coming">Up Coming</string>
     <string name="top_rated">Top Rated</string>
     <string name="_60">60%</string>
+    <string name="movie_name">Pelicula Name</string>
     <string name="error_service">Servicio no disponible, intente más tarde.</string>
     <string name="verifica_conexion">Verifica tu conexion de internet</string>
     <string name="descripci_n_general">Descripción general</string>
