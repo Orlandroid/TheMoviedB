@@ -7,16 +7,16 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        def  navigation_version = "2.4.2"
-        def  dagger_hilt_version = "2.38.1"
+        def  navigation_version = "2.6.0"
+        def  dagger_hilt_version = '2.45'
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version")
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_hilt_version"
     }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id 'com.android.application' version '7.2.1' apply false
-    id 'com.android.library' version '7.2.1' apply false
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
 }
 
@@ -25,11 +25,11 @@ task clean(type: Delete) {
 }
 
 ext {
-    room_version = "2.4.3"
+    room_version = "2.5.2"
     retrofit_version = "2.9.0"
-    navigation_version = "2.5.1"
-    lifecycle_version = "2.5.1"
-    dagger_hilt_version = "2.38.1"
+    navigation_version = "2.6.0"
+    lifecycle_version = " 2.6.1"
+    dagger_hilt_version = "2.45"
     lottieVersion = "3.4.0"
     work_version = "2.7.1"
     moshi_version="1.11.0"
