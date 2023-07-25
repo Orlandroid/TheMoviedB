@@ -21,7 +21,7 @@
         android:label="JobsFragment" >
         <argument
             android:name="jobResponse"
-            app:argType="com.example.themoviedb.domain.entities.remote.JobsResponse" />
+            app:argType="com.example.domain.entities.remote.JobsResponse" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_translations"
