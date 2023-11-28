@@ -7,3 +7,4 @@ class TheMovieDbAuth {
         const val BEARER ="Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjE5ZDdlN2JlODgxNDk5NzE4YjdiZWU2ZTY4OTE5NyIsInN1YiI6IjYyYzEyNjA0MjJlNDgwMGZhNWMyYWJhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I2qkA6x3-CRMoMtSbSL605h0Bhiql2NQkAqGop322uc"
     }
 }
+

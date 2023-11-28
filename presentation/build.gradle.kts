@@ -81,7 +81,5 @@ dependencies {
     implementation("androidx.work:work-runtime:2.7.1")
     //SkeletonLayout
     implementation("com.faltenreich:skeletonlayout:4.0.0")
-    //Paging 3
-    implementation("androidx.paging:paging-runtime-ktx:3.1.1")
 
 }

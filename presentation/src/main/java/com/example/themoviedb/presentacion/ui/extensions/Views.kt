@@ -1,5 +1,6 @@
 package com.example.themoviedb.presentacion.ui.extensions
 
+import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.ColorRes
@@ -25,7 +26,7 @@ fun View.click(click: () -> Unit) {
     setOnClickListener { click() }
 }
 
-fun View.getColor(@ColorRes color: Int): Int {
-    return this.context.resources.getColor(color)
+fun Context.getColor(@ColorRes color: Int): Int {
+    return resources.getColor(color)
 }
 
