@@ -4,6 +4,8 @@ package com.example.themoviedb.presentacion.ui.home.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentHomeBinding
@@ -16,6 +18,7 @@ import com.example.themoviedb.presentacion.ui.home.adpters.HomeAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
 import com.example.themoviedb.presentacion.ui.home.adpters.HeaderAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
@@ -124,14 +127,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 is Result.Loading -> {
 
                 }
+
                 is Result.Success -> {
                 }
+
                 is Result.EmptyList -> {
 
                 }
+
                 is Result.Error -> {
 
                 }
+
                 is Result.ErrorNetwork -> {
 
                 }
@@ -142,15 +149,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 is Result.Loading -> {
 
                 }
+
                 is Result.Success -> {
-                    resultsAdapter.setData(it.data.results)
+                    lifecycleScope.launch {
+                        resultsAdapter.submitData(PagingData.from(it.data.results))
+                    }
                 }
+
                 is Result.EmptyList -> {
 
                 }
+
                 is Result.Error -> {
 
                 }
+
                 is Result.ErrorNetwork -> {
 
                 }

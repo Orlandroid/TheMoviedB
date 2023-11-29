@@ -15,6 +15,11 @@ class Repository @Inject constructor(
     private val localDataSource: LocalDataSourceImpl
 ) {
 
+    companion object {
+        const val NETWORK_PAGE_SIZE = 20
+        const val PRE_FETCH_DISTANCE = 5
+    }
+
     suspend fun getPopulars(page: String): PopularMovieResponse = remoteDataSource.getPopulars(page)
 
     suspend fun getDetailMovie(movieId: Int) = remoteDataSource.getDetailMovie(movieId)

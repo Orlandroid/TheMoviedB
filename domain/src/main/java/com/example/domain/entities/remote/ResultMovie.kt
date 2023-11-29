@@ -1,6 +1,6 @@
 package com.example.domain.entities.remote
 
-data class Result(
+data class ResultMovie(
     val adult: Boolean,
     val backdrop_path: String?,
     val genre_ids: List<Int>,
