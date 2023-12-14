@@ -29,7 +29,6 @@ class MovieDetailFragment :
     override fun setUpUi() = with(binding) {
         changeTitleToolbar(getString(R.string.movie_detail))
         recyclerCategories.adapter = adapter
-        Log.w(getPackageName(), args.movieId.toString())
         viewModel.getMovieId(args.movieId)
     }
 
