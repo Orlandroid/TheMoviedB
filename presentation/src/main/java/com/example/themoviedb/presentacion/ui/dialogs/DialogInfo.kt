@@ -17,10 +17,10 @@ class DialogInfo(
 
 
     companion object {
-        const val SUCCES_MESSAGE_COLOR = R.color.succes
-        const val WARNING_MESSAGE_COLOR = R.color.waring
-        const val ERROR_MESSAGE_COLOR = R.color.danger
-        const val INFO_MESSAGE_COLOR = R.color.info
+         val SUCCES_MESSAGE_COLOR = R.color.succes
+         val WARNING_MESSAGE_COLOR = R.color.waring
+         val ERROR_MESSAGE_COLOR = R.color.danger
+         val INFO_MESSAGE_COLOR = R.color.info
         const val SUCCES_MESSAGE = 0
         const val WARNING_MESSAGE = 1
         const val ERROR_MESSAGE = 2

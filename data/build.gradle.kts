@@ -16,6 +16,8 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+
+
     buildTypes {
         release {
             isMinifyEnabled = false

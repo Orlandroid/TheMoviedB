@@ -1,17 +1,16 @@
 package com.example.themoviedb.presentacion.ui.moviedetail
 
-import android.util.Log
+import android.media.Image
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.domain.entities.remote.movies.Genre
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentMovieDetailBinding
-import com.example.domain.entities.remote.movies.Genre
 import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.chipscomponente.ChipsAdapter
 import com.example.themoviedb.presentacion.ui.extensions.changeTitleToolbar
-import com.example.themoviedb.presentacion.ui.extensions.getPackageName
 import com.example.themoviedb.presentacion.ui.extensions.observeApiResult
 import com.example.themoviedb.presentacion.util.ImageUtil
 import com.example.themoviedb.presentacion.util.getAverageInCents

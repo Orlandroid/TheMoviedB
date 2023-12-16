@@ -1,10 +1,9 @@
 package com.example.data
 
 class TheMovieDbAuth {
-
-    companion object{
-        const val API_KEY ="3f19d7e7be881499718b7bee6e689197"
-        const val BEARER ="Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZjE5ZDdlN2JlODgxNDk5NzE4YjdiZWU2ZTY4OTE5NyIsInN1YiI6IjYyYzEyNjA0MjJlNDgwMGZhNWMyYWJhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.I2qkA6x3-CRMoMtSbSL605h0Bhiql2NQkAqGop322uc"
+    companion object {
+        const val BEAR_TOKEN =
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjQ1MjA5YmNhMGE3YjdkOTdmNzk4MmIwYmRjNzEwNSIsInN1YiI6IjYyYzEyNjA0MjJlNDgwMGZhNWMyYWJhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rQmgciHfz0cg0tEPOcsI7zAhBf2Hav11cdC6fgLqFxE"
+        const val API_KEY = "d645209bca0a7b7d97f7982b0bdc7105"
     }
 }
-

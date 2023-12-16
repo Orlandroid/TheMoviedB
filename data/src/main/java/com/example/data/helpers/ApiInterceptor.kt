@@ -14,10 +14,11 @@ class ApiInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         var original = chain.request()
-        val url =
-            original.url.newBuilder().addQueryParameter(API_KEY, TheMovieDbAuth.API_KEY)
-                .addQueryParameter(LANGUAGE, LANGUAGE_MX).build()
-        original = original.newBuilder().url(url).build()
+        val url = original.url.newBuilder().addQueryParameter(LANGUAGE, LANGUAGE_MX).build()
+        original.header("Authorization")
+        original =
+            original.newBuilder().addHeader("Authorization", TheMovieDbAuth.BEAR_TOKEN).url(url)
+                .build()
         return chain.proceed(original)
     }
 }

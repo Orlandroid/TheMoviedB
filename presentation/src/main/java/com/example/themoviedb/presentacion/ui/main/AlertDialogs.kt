@@ -19,10 +19,10 @@ class AlertDialogs(
     private lateinit var binding: AlertDialogMessagesBinding
 
     companion object {
-        const val SUCCES_MESSAGE_COLOR = R.color.succes
-        const val WARNING_MESSAGE_COLOR = R.color.waring
-        const val ERROR_MESSAGE_COLOR = R.color.danger
-        const val INFO_MESSAGE_COLOR = R.color.info
+        val SUCCES_MESSAGE_COLOR = R.color.succes
+        val WARNING_MESSAGE_COLOR = R.color.waring
+        val ERROR_MESSAGE_COLOR = R.color.danger
+        val INFO_MESSAGE_COLOR = R.color.info
         const val SUCCES_MESSAGE = 0
         const val WARNING_MESSAGE = 1
         const val ERROR_MESSAGE = 2
@@ -103,14 +103,17 @@ class AlertDialogs(
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(SUCCES_MESSAGE_COLOR))
                 binding.titleHeader.text = "Succes"
             }
+
             1 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(WARNING_MESSAGE_COLOR))
                 binding.titleHeader.text = "Warning"
             }
+
             2 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(ERROR_MESSAGE_COLOR))
                 binding.titleHeader.text = "Error"
             }
+
             3 -> {
                 binding.headerDialog.setCardBackgroundColor(resources.getColor(INFO_MESSAGE))
                 binding.titleHeader.text = "Info"
