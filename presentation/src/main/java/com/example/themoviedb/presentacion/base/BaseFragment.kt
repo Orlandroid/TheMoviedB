@@ -14,27 +14,38 @@ import com.example.themoviedb.presentacion.ui.MainActivity
 abstract class BaseFragment<ViewBinding : ViewDataBinding>(@LayoutRes protected val contentLayoutId: Int) :
     Fragment() {
 
-    protected lateinit var binding: ViewBinding
+    private var _binding: ViewBinding? = null
+
+    protected val binding: ViewBinding
+        get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false)
+        _binding = DataBindingUtil.inflate(inflater, contentLayoutId, container, false)
         return binding.root
     }
+
+    open fun configureToolbar() = MainActivity.ToolbarConfiguration()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpUi()
         observerViewModel()
-        (requireActivity() as MainActivity).hideProgress()
+        (requireActivity() as MainActivity).apply {
+            hideProgress()
+            setToolbarConfiguration(configureToolbar())
+        }
     }
 
     protected abstract fun setUpUi()
 
     open fun observerViewModel() {
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

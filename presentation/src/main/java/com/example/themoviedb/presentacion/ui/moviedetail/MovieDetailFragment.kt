@@ -1,6 +1,6 @@
 package com.example.themoviedb.presentacion.ui.moviedetail
 
-import android.media.Image
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -9,6 +9,7 @@ import com.example.domain.entities.remote.movies.Genre
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentMovieDetailBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
+import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.chipscomponente.ChipsAdapter
 import com.example.themoviedb.presentacion.ui.extensions.changeTitleToolbar
 import com.example.themoviedb.presentacion.ui.extensions.observeApiResult
@@ -25,16 +26,18 @@ class MovieDetailFragment :
     private val args: MovieDetailFragmentArgs by navArgs()
     private val imageUtil = ImageUtil()
 
+    override fun configureToolbar() = MainActivity.ToolbarConfiguration(showToolbar = true)
+
     override fun setUpUi() = with(binding) {
         changeTitleToolbar(getString(R.string.movie_detail))
         recyclerCategories.adapter = adapter
         viewModel.getMovieId(args.movieId)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun observerViewModel() {
         super.observerViewModel()
-        observeApiResult(
-            viewModel.movieDetailResponse,
+        observeApiResult(viewModel.movieDetailResponse,
             shouldCloseTheViewOnApiError = true,
             hasProgressTheView = false,
             onLoading = { binding.skeleton.showSkeleton() },

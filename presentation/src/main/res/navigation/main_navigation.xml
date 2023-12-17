@@ -3,47 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeMoviesFragment">
+    app:startDestination="@id/splashScreenFragment">
 
     <fragment
         android:id="@+id/appartment_jobs"
-        tools:layout="@layout/fragment_apartments"
         android:name="com.example.themoviedb.presentacion.ui.jobs.ApartmentsFragment"
-        android:label="JobsFragment" >
+        android:label="JobsFragment"
+        tools:layout="@layout/fragment_apartments">
         <action
             android:id="@+id/action_appartment_jobs_to_jobsFragment2"
             app:destination="@id/jobsFragment" />
     </fragment>
     <fragment
         android:id="@+id/jobsFragment"
-        tools:layout="@layout/fragment_jobs"
         android:name="com.example.themoviedb.presentacion.ui.jobs.JobsFragment"
-        android:label="JobsFragment" >
+        android:label="JobsFragment"
+        tools:layout="@layout/fragment_jobs">
         <argument
             android:name="jobResponse"
             app:argType="com.example.domain.entities.remote.JobsResponse" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_translations"
         android:id="@+id/translationsFragment"
         android:name="com.example.themoviedb.presentacion.ui.translations.TranslationsFragment"
-        android:label="TranslationsFragment" />
+        android:label="TranslationsFragment"
+        tools:layout="@layout/fragment_translations" />
     <fragment
-        tools:layout="@layout/fragment_home_movies"
         android:id="@+id/homeMoviesFragment"
         android:name="com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragment"
-        android:label="HomeMoviesFragment" >
+        android:label="HomeMoviesFragment"
+        tools:layout="@layout/fragment_home_movies">
         <action
             android:id="@+id/action_homeMoviesFragment_to_peopleFragment"
             app:destination="@id/peopleFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_movie_detail"
         android:id="@+id/peopleFragment"
         android:name="com.example.themoviedb.presentacion.ui.moviedetail.MovieDetailFragment"
-        android:label="PeopleFragment" >
+        android:label="PeopleFragment"
+        tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="movieId"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.themoviedb.presentacion.ui.splashscreen.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeMoviesFragment"
+            app:destination="@id/homeMoviesFragment" />
     </fragment>
 </navigation>

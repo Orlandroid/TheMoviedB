@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ActivityMainBinding
 import com.example.themoviedb.presentacion.helpers.gone
 import com.example.themoviedb.presentacion.helpers.visible
+import com.example.themoviedb.presentacion.ui.extensions.click
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -20,21 +17,25 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-    private lateinit var appBarConfiguration: AppBarConfiguration
+    private var navController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpUi()
-        setUpDrawer()
+        setUpNavController()
+    }
+
+    private fun setUpNavController() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
     }
 
     private fun setUpUi() {
         with(binding) {
             setSupportActionBar(toolbarLayout.toolbar)
-            toolbarLayout.root.visible()
             toolbarLayout.toolbarBack.gone()
         }
     }
@@ -43,8 +44,12 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarLayout.root.gone()
     }
 
-    fun showToolbar() {
-        binding.toolbarLayout.root.visible()
+    fun showToolbar(shouldShow: Boolean) {
+        if (shouldShow) {
+            binding.toolbarLayout.root.visible()
+        } else {
+            binding.toolbarLayout.root.gone()
+        }
     }
 
     private fun showProgress() {
@@ -67,19 +72,41 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarLayout.toolbarTitle.text = title
     }
 
-    private fun setUpDrawer() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
-        binding.navView.setupWithNavController(navController)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+    private fun showBackArrow(shouldShow: Boolean) {
+        if (shouldShow) {
+            binding.toolbarLayout.toolbarBack.visible()
+        } else {
+            binding.toolbarLayout.toolbarBack.gone()
+        }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) ||
-                return super.onSupportNavigateUp()
+    private fun setOnBackButton(clickOnBack: (() -> Unit)?) = with(binding) {
+        val clickOnBackButton = if (clickOnBack == null) {
+            {
+                navController?.popBackStack()
+            }
+        } else {
+            {
+                clickOnBack()
+            }
+        }
+        toolbarLayout.toolbarBack.click {
+            clickOnBackButton()
+        }
     }
+
+    fun setToolbarConfiguration(configuration: ToolbarConfiguration) {
+        setOnBackButton(configuration.clickOnBack)
+        changeTextToolbar(configuration.toolbarTitle)
+        showToolbar(configuration.showToolbar)
+        showBackArrow(configuration.showBackArrow)
+    }
+
+    data class ToolbarConfiguration(
+        val showToolbar: Boolean = false,
+        val showBackArrow: Boolean = true,
+        val clickOnBack: (() -> Unit)? = null,
+        val toolbarTitle: String = ""
+    )
 
 }

@@ -1,5 +1,7 @@
 package com.example.themoviedb.presentacion.ui.home.results
 
+import android.content.Context
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -10,6 +12,7 @@ import com.example.domain.entities.remote.ResultMovie
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentResultsBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
+import com.example.themoviedb.presentacion.ui.MainActivity
 import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
 import com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,11 +27,34 @@ class ResultsFragment(private val categories: CategoriesHome) :
     private val viewModel: ResultsViewModel by viewModels()
     private var resultsAdapter = ResultsAdapter { clickOnResult(it) }
 
+    override fun configureToolbar() =
+        MainActivity.ToolbarConfiguration(
+            showToolbar = true,
+            clickOnBack = { requireActivity().finish() }
+        )
+
     override fun setUpUi() = with(binding) {
         viewModel.categoriesHome = categories
         recycler.adapter = resultsAdapter
         getCurrentCategory()
     }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val callback = object : OnBackPressedCallback(
+            true // default to enabled
+        ) {
+            override fun handleOnBackPressed() {
+                requireActivity().finish()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(
+            this, // LifecycleOwner
+            callback
+        )
+    }
+
 
     private fun clickOnResult(result: ResultMovie) {
         findNavController().navigate(

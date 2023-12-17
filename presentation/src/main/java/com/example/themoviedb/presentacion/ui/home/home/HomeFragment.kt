@@ -81,7 +81,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     override fun setUpUi() {
-        (requireActivity() as MainActivity).showToolbar()
+        (requireActivity() as MainActivity).showToolbar(true)
         //viewModel.getProviders()
         viewModel.getPopularTv()
         with(binding) {

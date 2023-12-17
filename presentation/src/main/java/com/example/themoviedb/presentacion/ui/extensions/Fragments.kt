@@ -28,7 +28,7 @@ fun Fragment.shouldShowProgress(isLoading: Boolean) {
 }
 
 fun Fragment.showToolbar() {
-    (requireActivity() as MainActivity).showToolbar()
+    (requireActivity() as MainActivity).showToolbar(true)
 }
 
 fun Fragment.changeTitleToolbar(title: String) {
@@ -73,9 +73,11 @@ fun <T> Fragment.observeApiResult(
             is Result.Success -> {
                 onSuccess(it.data)
             }
+
             is Result.EmptyList -> {
                 emptyList()
             }
+
             is Result.Error -> {
                 if (onError == null) {
                     showErrorApi(shouldCloseTheViewOnApiError)
@@ -83,9 +85,11 @@ fun <T> Fragment.observeApiResult(
                     onError()
                 }
             }
+
             is Result.ErrorNetwork -> {
                 showErrorNetwork()
             }
+
             else -> {}
         }
     }
