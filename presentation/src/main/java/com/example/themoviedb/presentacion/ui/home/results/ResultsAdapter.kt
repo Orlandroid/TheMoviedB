@@ -1,4 +1,4 @@
-package com.example.themoviedb.presentacion.ui.home.adpters
+package com.example.themoviedb.presentacion.ui.home.results
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

@@ -54,27 +54,6 @@ class TranslationsViewModel @Inject constructor(
         }
     }
 
-    fun getLanguages() {
-        viewModelScope.launch(coroutineDispatchers.io) {
-            doLoadingAndConnection(liveData = _languagesResponse)
-            try {
-                val response = repository.getLanguages()
-                if (response.isEmpty()) {
-                    withContext(coroutineDispatchers.main) {
-                        _languagesResponse.value = Result.EmptyList
-                    }
-                }
-                withContext(coroutineDispatchers.main) {
-                    _languagesResponse.value = Result.Success(response)
-                }
-            } catch (e: Exception) {
-                withContext(coroutineDispatchers.main) {
-                    _languagesResponse.value = Result.Error(e.message ?: "Error app")
-                }
-            }
-        }
-    }
-
 
     private fun <T> doLoadingAndConnection(
         dispatcher: CoroutineDispatcher = coroutineDispatchers.io,

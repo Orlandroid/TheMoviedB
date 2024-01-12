@@ -3,7 +3,6 @@ package com.example.themoviedb.presentacion.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.ActivityMainBinding
@@ -80,6 +79,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun clickOnSettings(clickOnSettings: (() -> Unit)?) {
+        binding.toolbarLayout.imageSettings.click {
+            clickOnSettings?.invoke()
+        }
+    }
+
     private fun setOnBackButton(clickOnBack: (() -> Unit)?) = with(binding) {
         val clickOnBackButton = if (clickOnBack == null) {
             {
@@ -100,12 +105,14 @@ class MainActivity : AppCompatActivity() {
         changeTextToolbar(configuration.toolbarTitle)
         showToolbar(configuration.showToolbar)
         showBackArrow(configuration.showBackArrow)
+        clickOnSettings(configuration.clickOnSettings)
     }
 
     data class ToolbarConfiguration(
         val showToolbar: Boolean = false,
         val showBackArrow: Boolean = true,
         val clickOnBack: (() -> Unit)? = null,
+        val clickOnSettings: (() -> Unit)? = null,
         val toolbarTitle: String = ""
     )
 

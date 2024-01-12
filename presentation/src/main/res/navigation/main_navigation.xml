@@ -35,10 +35,13 @@
         tools:layout="@layout/fragment_home_movies">
         <action
             android:id="@+id/action_homeMoviesFragment_to_peopleFragment"
-            app:destination="@id/peopleFragment" />
+            app:destination="@id/resultDetailFragment" />
+        <action
+            android:id="@+id/action_homeMoviesFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/peopleFragment"
+        android:id="@+id/resultDetailFragment"
         android:name="com.example.themoviedb.presentacion.ui.moviedetail.MovieDetailFragment"
         android:label="PeopleFragment"
         tools:layout="@layout/fragment_movie_detail">
@@ -55,4 +58,9 @@
             android:id="@+id/action_splashScreenFragment_to_homeMoviesFragment"
             app:destination="@id/homeMoviesFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.themoviedb.presentacion.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

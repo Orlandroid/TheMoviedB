@@ -13,7 +13,6 @@ import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentResultsBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
 import com.example.themoviedb.presentacion.ui.MainActivity
-import com.example.themoviedb.presentacion.ui.home.adpters.ResultsAdapter
 import com.example.themoviedb.presentacion.ui.home.home.HomeMoviesFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -30,7 +29,10 @@ class ResultsFragment(private val categories: CategoriesHome) :
     override fun configureToolbar() =
         MainActivity.ToolbarConfiguration(
             showToolbar = true,
-            clickOnBack = { requireActivity().finish() }
+            clickOnBack = { requireActivity().finish() },
+            clickOnSettings = {
+                findNavController().navigate(HomeMoviesFragmentDirections.actionHomeMoviesFragmentToSettingsFragment())
+            }
         )
 
     override fun setUpUi() = with(binding) {
