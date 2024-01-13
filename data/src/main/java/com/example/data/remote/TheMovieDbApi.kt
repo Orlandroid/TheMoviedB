@@ -46,20 +46,4 @@ interface TheMovieDbApi {
 
     @GET("person/popular")
     suspend fun getPersonsPopular(): PeoplePopularResponse
-
-    @GET("movie/upcoming")
-    suspend fun getUpComming(): Result<String>
-
-    @GET("movie/top_rated")
-    suspend fun getTopRated(): Result<String>
-
-    @GET("movie/latest")
-    suspend fun getLasted(): Result<String>
-
-
-    @GET("/genre/movie/list")
-    suspend fun getGeneres(): Result<String>
-
-    @GET("list/{id}")
-    suspend fun getAllMoviesByUserId(): Result<String>
 }

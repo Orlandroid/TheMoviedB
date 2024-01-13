@@ -1,5 +1,6 @@
 package com.example.themoviedb.presentacion.ui.chipscomponente
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,7 @@ class ChipsAdapter : RecyclerView.Adapter<ChipsAdapter.ViewHolder>() {
 
     private var listOfMenu = listOf<ChipElement>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(posts: List<ChipElement>) {
         listOfMenu = posts
         notifyDataSetChanged()

@@ -15,7 +15,10 @@ import com.example.themoviedb.presentacion.ui.extensions.changeTitleToolbar
 import com.example.themoviedb.presentacion.ui.extensions.observeApiResult
 import com.example.themoviedb.presentacion.util.ImageUtil
 import com.example.themoviedb.presentacion.util.getAverageInCents
+import com.example.themoviedb.presentacion.util.getDateAsString
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class MovieDetailFragment :
@@ -25,6 +28,8 @@ class MovieDetailFragment :
     private val adapter = ChipsAdapter()
     private val args: MovieDetailFragmentArgs by navArgs()
     private val imageUtil = ImageUtil()
+    private val dateFromBackend = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+    private val wishFormat = SimpleDateFormat("d MMM yyyy", Locale.ENGLISH)
 
     override fun configureToolbar() = MainActivity.ToolbarConfiguration(showToolbar = true)
 
@@ -46,13 +51,28 @@ class MovieDetailFragment :
                 Glide.with(requireContext())
                     .load(imageUtil.getBaseUrlImagePoster(urlImage = backdropPath))
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .placeholder(R.drawable.loading_animation).into(binding.imageMovie)
+                    .placeholder(R.drawable.loading_animation).into(binding.imageBack)
+            }
+            it.poster_path?.let { posterPath ->
+                Glide.with(requireContext())
+                    .load(imageUtil.getBaseUrlImagePoster(urlImage = posterPath))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .circleCrop()
+                    .placeholder(R.drawable.loading_animation).into(binding.imagePoster)
             }
             with(binding) {
                 progressWithText.progressBar.progress = getAverageInCents(it.vote_average)
                 progressWithText.progressPorcent.text = "${getAverageInCents(it.vote_average)} %"
-                titleMovie.text = it.title
+                //titleMovie.text = it.title
                 tvDescripcion.text = it.overview
+                val date = getDateAsString(
+                    formatCommonBackend = dateFromBackend.toPattern(),
+                    dateStringFromBackend = it.release_date,
+                    formatWish = wishFormat.toPattern()
+                )
+                tvDate.text = date
+                tvDuration.text = "${it.runtime} Min"
+                tvDuration.text = "${it.vote_count} Votes"
             }
             adapter.setData(getGenderForResponse(it.genres))
         }
