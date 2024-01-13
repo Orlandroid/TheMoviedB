@@ -9,21 +9,15 @@
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/popular.png" width="100%"></td>
-    <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/now playing.png" width="100%"></td>
+    <td><img src="https://github.com/Orlandroid/Resources_Repos/blob/main/theMovieDb/now_playing.png" width="100%"></td>
     <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/upcoming.png" width="100%"></td>
-    <td><img src="https://github.com/Orlandroid/images_for_repos/blob/main/theMovieDb/toprated.png" width="100%"></td>
+    <td><img src="https://github.com/Orlandroid/Resources_Repos/blob/main/theMovieDb/top_rated.png" width="100%"></td>
   </tr>
   <tr>
-    <td><strong>Home</strong></td>
-   <td><strong>Jobs</strong></td>
-    <td><strong>Apartments</strong></td>
-    <td><strong>Translations</strong></td>
+    <td><strong>Detail</strong></td>
   </tr>
   <tr>
-    <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/home.png" width="100%"></td>
-    <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/jobs.png" width="100%"></td>
-    <td><img src="https://raw.githubusercontent.com/Orlandroid/images_for_repos/main/theMovieDb/apartments.png" width="100%"></td>
-    <td><img src="https://github.com/Orlandroid/images_for_repos/blob/main/theMovieDb/translations.png" width="100%"></td>
+    <td><img src="https://github.com/Orlandroid/Resources_Repos/blob/main/theMovieDb/detail.png" width="100%"></td>
   </tr>
  
 </table>
