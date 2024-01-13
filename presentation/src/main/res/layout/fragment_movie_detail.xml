@@ -57,9 +57,9 @@
                         layout="@layout/progress_with_porcent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="@+id/image_back"
-                        app:layout_constraintTop_toBottomOf="@+id/image_poster" />
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/image_poster"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_descripcion"
@@ -93,12 +93,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/image_back"
-                        app:layout_constraintTop_toBottomOf="@+id/progress_with_text"
+                        app:layout_constraintTop_toBottomOf="@+id/title_movie"
                         tools:text="2023-10-18" />
 
                     <TextView
@@ -113,27 +113,6 @@
                         app:layout_constraintTop_toTopOf="@+id/tv_date"
                         tools:text="02 Hour 05 min" />
 
-                    <TextView
-                        android:id="@+id/textView13"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:text="@string/user_score"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/progress_with_text"
-                        app:layout_constraintTop_toTopOf="@+id/progress_with_text" />
-
-                    <TextView
-                        android:id="@+id/tv_user_rate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textColor="@color/black"
-                        app:layout_constraintStart_toStartOf="@+id/textView13"
-                        app:layout_constraintTop_toBottomOf="@+id/textView13"
-                        tools:text="1831" />
-
                     <ImageView
                         android:id="@+id/image_poster"
                         android:layout_width="0dp"
@@ -143,6 +122,20 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_back"
                         tools:srcCompat="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/title_movie"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_poster" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
         </ScrollView>

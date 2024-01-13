@@ -63,7 +63,7 @@ class MovieDetailFragment :
             with(binding) {
                 progressWithText.progressBar.progress = getAverageInCents(it.vote_average)
                 progressWithText.progressPorcent.text = "${getAverageInCents(it.vote_average)} %"
-                //titleMovie.text = it.title
+                titleMovie.text = it.title
                 tvDescripcion.text = it.overview
                 val date = getDateAsString(
                     formatCommonBackend = dateFromBackend.toPattern(),
