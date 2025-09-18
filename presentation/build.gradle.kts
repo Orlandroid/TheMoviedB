@@ -73,12 +73,12 @@ dependencies {
     implementation("androidx.hilt:hilt-work:1.3.0")
     //lifecycle
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4")
     // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.3")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.9.4")
     //Glide
-    implementation("com.github.bumptech.glide:glide:5.0.4")
-    annotationProcessor("com.github.bumptech.glide:compiler:5.0.4")
+    implementation("com.github.bumptech.glide:glide:5.0.5")
+    annotationProcessor("com.github.bumptech.glide:compiler:5.0.5")
     //Room Dependecies
     implementation("androidx.room:room-runtime:2.8.0")
     implementation("androidx.room:room-ktx:2.8.0")
