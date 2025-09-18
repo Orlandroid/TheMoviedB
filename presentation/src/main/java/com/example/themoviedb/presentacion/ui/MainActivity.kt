@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpUi() {
         with(binding) {
-            setSupportActionBar(toolbarLayout.toolbar)
+//            setSupportActionBar(toolbarLayout.toolbar) // removed because error when compaling
             toolbarLayout.toolbarBack.gone()
         }
     }
