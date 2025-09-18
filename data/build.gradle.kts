@@ -6,6 +6,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -50,7 +51,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
     //Room Dependecies
     implementation("androidx.room:room-runtime:2.8.0")
-    implementation("androidx.room:room-ktx:2.8.0") // corutinas
+    implementation("androidx.room:room-ktx:2.8.0")
     kapt("androidx.room:room-compiler:2.8.0")
     //Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.57.1")
