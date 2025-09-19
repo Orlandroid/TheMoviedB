@@ -42,7 +42,6 @@ dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
-    implementation(libs.material)
     implementation(libs.room.common)
     testImplementation(libs.junit4)
     androidTestImplementation(libs.androidx.junit)
