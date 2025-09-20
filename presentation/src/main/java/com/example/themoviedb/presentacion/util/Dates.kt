@@ -5,9 +5,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-fun getLocale(): Locale {
-    return Locale("es", "ES")
-}
 
 @SuppressLint("SimpleDateFormat")
 fun getDateFormant(dateStringFromBackend: String?, format: String): Date {

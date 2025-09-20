@@ -11,7 +11,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.example.themoviedb.presentacion.ui.MainActivity
 
-abstract class BaseFragment<ViewBinding : ViewDataBinding>(@LayoutRes protected val contentLayoutId: Int) :
+abstract class BaseFragment<ViewBinding : ViewDataBinding>(@param:LayoutRes protected val contentLayoutId: Int) :
     Fragment() {
 
     private var _binding: ViewBinding? = null

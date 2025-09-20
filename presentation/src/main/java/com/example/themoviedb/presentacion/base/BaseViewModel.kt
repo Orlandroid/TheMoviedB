@@ -14,7 +14,7 @@ import retrofit2.HttpException
 import java.net.SocketTimeoutException
 
 
-abstract class BaseViewModel constructor(
+abstract class BaseViewModel(
     protected val coroutineDispatchers: CoroutineDispatchers,
     val networkHelper: NetworkHelper
 ) : ViewModel() {
@@ -25,7 +25,7 @@ abstract class BaseViewModel constructor(
         UNKNOWN
     }
 
-    suspend inline fun <T> safeApiCall(
+    inline fun <T> safeApiCall(
         result: MutableLiveData<Result<T>>,
         coroutineDispatchers: CoroutineDispatchers,
         crossinline apiToCall: suspend () -> Unit,

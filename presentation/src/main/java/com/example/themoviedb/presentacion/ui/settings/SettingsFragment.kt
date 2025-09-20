@@ -1,5 +1,6 @@
 package com.example.themoviedb.presentacion.ui.settings
 
+import androidx.compose.material3.Text
 import com.example.themoviedb.R
 import com.example.themoviedb.databinding.FragmentSettingsBinding
 import com.example.themoviedb.presentacion.base.BaseFragment
@@ -15,7 +16,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(R.layout.fragment
         )
 
     override fun setUpUi() {
-
+        binding.composeView.setContent {
+            Text("Welcome to compose")
+        }
     }
 
 }

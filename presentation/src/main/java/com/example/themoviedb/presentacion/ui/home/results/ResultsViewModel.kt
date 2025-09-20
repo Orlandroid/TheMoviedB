@@ -4,7 +4,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.data.Repository
 import com.example.data.di.CoroutineDispatchers
 import com.example.data.pagination.PopularsPagingSource
 import com.example.data.pagination.getPagingConfig
@@ -19,7 +18,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ResultsViewModel @Inject constructor(
-    private val repository: Repository,
     private val theMovieDbApi: TheMovieDbApi,
     coroutineDispatchers: CoroutineDispatchers,
     networkHelper: NetworkHelper

@@ -10,6 +10,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -81,5 +82,18 @@ dependencies {
     //SkeletonLayout
     implementation(libs.skeletonlayout)
     implementation(libs.paging)
+    //Compose
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
 }
