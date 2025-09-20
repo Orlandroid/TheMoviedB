@@ -31,7 +31,7 @@ class ResultsFragment(private val categories: CategoriesHome) :
             showToolbar = true,
             clickOnBack = { requireActivity().finish() },
             clickOnSettings = {
-                findNavController().navigate(HomeMoviesFragmentDirections.actionHomeMoviesFragmentToSettingsFragment())
+                findNavController().navigate(HomeMoviesFragmentDirections.actionHomeMoviesFragmentToStartedScreenFragment())
             }
         )
 

@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_homeMoviesFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeMoviesFragment_to_startedScreenFragment"
+            app:destination="@id/startedScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultDetailFragment"
@@ -63,4 +66,9 @@
         android:name="com.example.themoviedb.presentacion.ui.settings.SettingsFragment"
         android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/startedScreenFragment"
+        android:name="com.example.themoviedb.presentacion.ui.starterScreen.StartedScreenFragment"
+        android:label="fragment_started_screen"
+        tools:layout="@layout/fragment_started_screen" />
 </navigation>
