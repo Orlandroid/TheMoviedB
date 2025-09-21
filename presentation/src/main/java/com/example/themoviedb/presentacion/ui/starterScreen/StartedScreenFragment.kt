@@ -1,10 +1,13 @@
 package com.example.themoviedb.presentacion.ui.starterScreen
 
+import android.media.Image
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,10 +15,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +30,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.themoviedb.R
@@ -42,10 +51,15 @@ class StartedScreenFragment :
 
     @Composable
     private fun StartedScreen(modifier: Modifier = Modifier) {
-        Column(Modifier.fillMaxSize()) {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
             UpComingMovies()
             Spacer(Modifier.height(24.dp))
             NowPlaying()
+            Spacer(Modifier.height(24.dp))
             Popular()
             Spacer(Modifier.height(24.dp))
             TrendingPersons()
@@ -86,7 +100,11 @@ class StartedScreenFragment :
                 )
             }
         }
-        Text("Upcoming movies")
+        Text(
+            modifier = Modifier.fillMaxWidth(),
+            text = "Upcoming movies",
+            textAlign = TextAlign.Center
+        )
     }
 
     @Composable
@@ -97,13 +115,11 @@ class StartedScreenFragment :
             modifier = Modifier.padding(start = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(10) { image ->
-                Image(
-                    painter = painterResource(id = R.drawable.crew),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .background(Color.Red)
+            items(10) {
+                BaseCardContent(
+                    contextDescription = "Movie title example",
+                    image = R.drawable.crew,
+                    imageBackground = Color.Red
                 )
             }
         }
@@ -116,15 +132,36 @@ class StartedScreenFragment :
             modifier = Modifier.padding(start = 8.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(10) { image ->
-                Image(
-                    painter = painterResource(id = R.drawable.note),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(100.dp)
-                        .background(Color.Blue)
+            items(10) {
+                BaseCardContent(
+                    contextDescription = "Movie title example",
+                    image = R.drawable.note,
+                    imageBackground = Color.Blue
                 )
             }
+        }
+    }
+
+    @Composable
+    private fun BaseCardContent(
+        contextDescription: String,
+        @DrawableRes image: Int,
+        imageBackground: Color,
+        imageHeight: Dp = 150.dp
+    ) {
+        Card(
+            modifier = Modifier.width(IntrinsicSize.Max),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+        ) {
+            Image(
+                painter = painterResource(id = image),
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(imageHeight)
+                    .background(imageBackground)
+            )
+            Text(text = contextDescription)
         }
     }
 
